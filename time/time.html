@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script type="text/javascript" src="time.js"></script>
+<script>
+
+//2016-3-29    mysql  1459287920000
+//js   timestamp:1459260155000 
+var timestamp = Date.parse(new Date());
+document.write("timestamp:"+timestamp);
+
+alert( fmtDate_noyear("2016-09-03"));
+alert(fmtDate(1459287920000));
+//alert( secs2str(130));
+
+for(i=10;i<61;i++)
+{
+var s="  <option>@min@</option>";
+s=s.replace("@min@",i);	
+	document.write(s+"\r\n<p>");
+}
+</script>
+
+</body>
+</html>

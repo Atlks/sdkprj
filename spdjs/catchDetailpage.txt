@@ -1,0 +1,11 @@
+var fs = require("fs");
+
+for (i = 1; i <= 1; i++) {
+   // url = 'https://cn.pornhub.com/video?c=80&page=' + i;
+    cateid = 24; cate='公众野战';
+    page = i;
+    fname = "hornhub" + "_cate" + cateid + "_page" + page + '.html';
+    console.log(fname);
+    var html = fs.readFileSync(fname, "utf8");
+    getDetailLinkV2(html,cateid,cate);
+}

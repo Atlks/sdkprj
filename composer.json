@@ -1,0 +1,7 @@
+{
+  "require": {
+    "monolog/monolog": "^1.26",
+    "mtdowling/cron-expression": "^1.2",
+    "peppeocchi/php-cron-scheduler": "^2.4"
+  }
+}

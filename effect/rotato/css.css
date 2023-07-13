@@ -1,0 +1,27 @@
+/* CSS Document */
+
+ .rotato_ini {
+	 
+     
+    top:40px;
+    opacity:0.8;
+    
+   /* -webkit-transition: top .3s linear .4s, opacity 1s linear .3s;
+	   transition: top .3s linear .4s, opacity 1s linear .3s;*/
+}
+.rotato_finish {
+	 
+	opacity:1;
+ 
+	top:40px;
+    
+	transform: rotateY(360deg);
+	
+	-moz-transition:  all 5s linear .4s,opacity 2s linear .3s; /* Firefox 4 */
+ -o-transition:   all 5s linear .4s,opacity 2s linear .3s; /* Opera */
+	-webkit-transition: all 5s linear .4s,opacity 2s linear .3s;
+		transition:  all 5s linear .4s,opacity 2s linear .3s;
+}
+
+
+

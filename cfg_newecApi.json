@@ -1,0 +1,9 @@
+{
+  "文件注释：：本文件为newec api 接口配置人件": 1,
+  "https_poster配置遇到https时发起 url post时候的调用语言，可谓node 和php ": 1,
+  "https_poster": "php",
+  "def": 1,
+  "url": "https://7398c09d63b0.ngrok.io/v1/api/order/build",
+  "appId": "n6Gt5uWMYfWRSWHL",
+  "appSecret": "TUIsepqColazaBYwCnKanAqede1A15vA"
+}

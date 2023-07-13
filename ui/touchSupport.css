@@ -1,0 +1,55 @@
+@charset "gb2312";
+.touchSpt {
+	position: absolute;
+	top: 910px;
+	/*top:120px;*/
+	left:140px;
+}
+.touchSpt img{
+	 
+	 
+	width: 400px;
+	height: 80px;
+	border-right-width: 1px;
+ 
+	border-right-style: dotted;
+	 
+	border-right-color: #CCC;
+	visibility:hidden;
+	 
+
+
+	
+}
+
+.touchSpt span{
+	/*background-color:#6CF;*/
+	margin-left: 50px;
+	 
+	width: 400px;
+	height: 80px;
+	border-right-width: 1px;
+ 
+	border-right-style:dashed;
+	 
+	border-right-color:#09F;
+	display:inline-block;
+	 
+
+
+	
+}
+/*.searchbox
+{
+	margin-left:1200px !important;
+	margin-top:-400px;
+}
+
+.searchbox .textbox
+{
+	margin-left:-900px;
+}
+.searchbox .keypad
+{
+	margin-left:-900px;
+}*/

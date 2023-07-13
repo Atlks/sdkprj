@@ -1,0 +1,37 @@
+<script>
+String.prototype.endWith=function(str){
+	if(str==null||str==""||this.length==0||str.length>this.length)
+	  return false;
+	if(this.substring(this.length-str.length)==str)
+	  return true;
+	else
+	  return false;
+	return true;
+}
+function previewOb3(url)
+{
+logx(url);
+	if( url.endWith(".jpg"))
+	{
+	window.open("../"+url,null,null,null);
+	return;
+	}
+	if( url.endWith(".txt"))
+		{
+			var mp={};
+			mp.meth="gettxt";
+			mp.url=url;
+			dwrC.execOb(mp,function(data)	
+				{
+					processJavaEX(data);
+				//	if(data.length>0)
+						alert("文本内容为："+data);
+				});
+			return;
+		}
+		//video
+		window.open("../com.attilax/preview/prevideo.jsp?url="+encodeURIComponent(url),null,null,null);
+	
+}
+//previewOb3("http://www.xinhuanet.com/legal/titlepic/127256123_title0h.jpg");
+</script>

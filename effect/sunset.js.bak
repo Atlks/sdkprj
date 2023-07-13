@@ -1,0 +1,146 @@
+// JavaScript Document
+//（开始值，结束值，当前比值）
+//@encode utf8 
+var test_add_h=0;
+var sun_top_hi_most=5;
+
+var sun_top;
+var sun_left;
+var sun_r;
+var sun_g,sun_b;
+//---sun lit seri
+var sun_lit_r,sun_lit_g,sun_lit_b;
+
+//----------sky clor
+var sky_r;
+var sky_g;
+var sky_b;
+var r_max=79; 
+var g_max=197;
+var b_max=226;
+var r_min=50; 
+var g_min=60;
+var b_min=90;
+function getCurVal(startVal,endVal,percent)
+{
+	
+	 var rang= Math.abs( startVal-endVal);
+	   var adjus_count= Math.round (  percent*rang);
+	 
+	 if(startVal>endVal)    //reduce 
+   var  cur_val=startVal-adjus_count;
+   else    //up load
+    var  cur_val=startVal+adjus_count;
+	return cur_val;
+	
+}
+function getCurTime_secFmt()
+{
+	
+var myDate = new Date();
+//myDate.getYear();        //获取当前年份(2位)
+//myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+//myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+//myDate.getDate();        //获取当前日(1-31)
+//myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
+//myDate.getTime();        //获取当前时间(从1970.1.1开始的毫秒数)
+var h=myDate.getHours()+test_add_h;       //获取当前小时数(0-23)
+var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+var s=myDate.getSeconds();     //获取当前秒数(0-59)
+return 	h*3600+m*60+s;
+	
+}
+
+// for am
+function getCurTime_secFmt_percent()
+{
+	var now=getCurTime_secFmt();
+	startVal=6*3600;
+	endVal=13*3600+0*60;
+	 var rang= Math.abs( startVal-endVal);
+	 
+	 
+  			 var adjus_count=now-startVal;
+			 return adjus_count/rang; 		 
+		
+}
+
+function getCurTime_secFmt_percent_allday(am_pm)
+{
+	var now=getCurTime_secFmt();
+	
+	var startVal=6*3600;
+	var endVal=13*3600+0*60;
+	
+	if(am_pm=="pm")	
+	{
+		startVal=13*3600+0*60;
+		endVal=21*3600;
+	}
+	 var rang= Math.abs( startVal-endVal);
+	 
+	 
+  			 var adjus_count=now-startVal;
+			 return adjus_count/rang; 		 
+		
+}
+
+/*
+background-image:radial-gradient( circle at 435px 335px,  #FF9900  20px, rgb(255,255,51)  5px, rgb(79,197,226) 1000px); 
+*/
+
+
+function sunset_ini()
+{
+var scr_wid_p9=screen.width;
+var scr_wid_p9_half=scr_wid_p9/2;
+var now_percent_am=getCurTime_secFmt_percent();
+sun_top=getCurVal(1000,50,now_percent_am);
+sun_left=getCurVal(50,scr_wid_p9_half,now_percent_am);
+
+sky_r=getCurVal(r_min,r_max,now_percent_am);
+sky_g=getCurVal(g_min,g_max,now_percent_am)
+sky_b=getCurVal(b_min,b_max,now_percent_am)
+
+ setCssNatureEffect();
+ 
+ 
+};
+
+function  setCssNatureEffect () {
+	var css_s="radial-gradient( circle at @leftpx @toppx,  #FF9900  20px, rgb(255,255,51)  5px, rgb(@red,@gre,@blu) 1000px) ";
+ css_s=css_s.replace("@top",sun_top).replace("@left",sun_left).replace("@red",sky_r).replace("@gre",sky_g).replace("@blu",sky_b);
+ console.log(css_s);
+ $(document.body).css("background-image",css_s);
+}
+
+function sunset_ini_pm()
+{
+var scr_wid_p9=screen.width;
+var scr_wid_p9_half=scr_wid_p9/2;
+//diff
+var now_percent_am=getCurTime_secFmt_percent_allday("pm");
+var top=getCurVal(sun_top_hi_most,1000,now_percent_am);
+var left=getCurVal(scr_wid_p9_half,scr_wid_p9,now_percent_am);
+
+var r_now=getCurVal(r_max,r_min,now_percent_am);
+var g_now=getCurVal(g_max,g_min,now_percent_am)
+var b_now=getCurVal(b_max,b_min,now_percent_am)
+//  79,197,226
+var css_s="radial-gradient( circle at @leftpx @toppx,  #FF9900  20px, rgb(255,255,51)  5px, rgb(@red,@gre,@blu) 1000px) ";
+ css_s=css_s.replace("@top",top).replace("@left",left).replace("@red",r_now).replace("@gre",g_now).replace("@blu",b_now);
+ console.log(css_s);
+ $(document.body).css("background-image",css_s);
+ 
+};
+function sunset_ini_ex()
+{
+	var myDate = new Date();
+	var h=myDate.getHours();  h=h+test_add_h;
+	if(h>12)  //pm   pm1300
+	{
+		 sunset_ini_pm();
+	}else
+	 sunset_ini();
+}
+sunset_ini_ex();

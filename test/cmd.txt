@@ -1,0 +1,13 @@
+zsh: suspended
+ /Users/ati/Desktop/prj2hzSyncNewec/2hz-sync-newec/timer_mac task1_test.php 3
+
+
+  /Users/ati/Desktop/prj2hzSyncNewec/2hz-sync-newec/timer_mac task4_syncBetDataRdm.php 5
+
+
+set path ver...   php start dir...
+  export PATH=/Users/ati/Desktop/prj2hzSyncNewec/2hz-sync-newec/:/Applications/MxSrvs/bin/php/bin/:/aaa
+
+
+
+

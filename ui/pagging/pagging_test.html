@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<script src="../../../com.atilax.frmwk/jquery-1.11.3.js"></script>
+<script src="paggingCoreV3r44.js"></script>
+<script src="paggingGuiV3r44.js"></script>
+</head>
+
+<body>
+<!-- 数据显示区区域-->
+<div style="display:nonexx" id="datalist_div">
+
+</div>
+<!-- 数据显示区区域 end-->
+
+
+<!-- 翻页控件区域-->
+<div style="display:nonexx" id="paggingDiv">
+<script>
+
+
+</script>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.first()" style="xxbackground-color:#F0F0F0;">first第一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.prePageEvent()" style="xxbackground-color:#F0F0F0;">pre上一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.next_click()" style="xxbackground-color:#F0F0F0;">next下一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.last()" style="xxbackground-color:#F0F0F0;">last最后一页</button>
+ page页数:<span id="page_ui">0</span>/<span id="pages_ui">100</span>  &nbsp; rows数据数:<span id="row_ui">999999</span></p>
+ <br>
+ <div id="scrool_spyxx" class="page_loding"  xxxdata-am-scrollspy="{animation: 'fade'}" style="height:30px; display:none">loading...</div>
+<label for="select">每页记录
+  <select name="select3" id="select3">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select>
+   自定义
+   <input name="textfield2" type="text" id="pagesize1" size="3">
+  页数:</label>
+<select name="select" id="select">
+  <option value="1">1</option>
+  <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+<label for="textfield">   页数:</label>
+ <input name="textfield" type="text" id="page1" size="3">
+ <input type="button" name="button2" id="button2" value="提交">
+</div>
+
+<!-- 翻页控件区域  end-->
+
+
+<!--  绑定翻页查询数据事件-->
+<script >
+
+var arr=getTestdata();
+var paggingGui1=new paggingGui();
+paggingGui1.list=arr;
+//paggingGui1.iniUi({pagesize:10,page:1,total:2000});
+paggingGui1.onSelectPage=function(param)
+{
+	$("#datalist_div").html("");
+	this.iniUi(param);
+	var cur_arr=getCurPageDatas(param.data,param.page,param.pagesize);
+	for(curitem of cur_arr)
+	{
+		
+		$("#datalist_div").append(","+curitem);
+	}
+	
+	
+}
+//iniUi()==onSelectPage
+
+paggingGui1.onSelectPage({pagesize:10,page:1,total:arr.length,data:arr});
+
+function getTestdata()
+{
+	var a=new Array();
+	for(i=1;i<99;i++)
+	{
+	a.push(i);	
+	}
+	return a ;
+	
+}
+
+</script>
+</body>
+</html>

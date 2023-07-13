@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<script src="../../../com.atilax.frmwk/jquery-1.11.3.js"></script>
+<script src="paggingCoreV3r44.js"></script>
+<script src="paggingGuiV3r44.js"></script>
+</head>
+
+<body>
+<!-- 数据显示区区域-->
+<div style="display:nonexx" id="datalist_div">
+<img id="img" width="300px" height="300px" src="" />
+</div>
+<!-- 数据显示区区域 end-->
+
+
+<!-- 翻页控件区域-->
+<div style="display:nonexx" id="paggingDiv">
+<script>
+
+
+</script>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.first()" style="xxbackground-color:#F0F0F0;">first第一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block prebtn" onclick="" style="xxbackground-color:#F0F0F0;">pre上一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block nextbtn" onclick="" style="xxbackground-color:#F0F0F0;">next下一页</button>
+<button id="next_btn" class="am-btn am-btn-success am-round  am-btn-xs am-btn-block" onclick="paggingGui1.last()" style="xxbackground-color:#F0F0F0;">last最后一页</button>
+ page页数:<span id="page_ui">0</span>/<span id="pages_ui">100</span>  &nbsp; rows数据数:<span id="row_ui">999999</span></p>
+ <br>
+ <div id="scrool_spyxx" class="page_loding"  xxxdata-am-scrollspy="{animation: 'fade'}" style="height:30px; display:none">loading...</div>
+<label for="select">每页记录
+  <select name="select3" id="pagesizeSlktr">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select>
+   自定义
+   <input name="textfield2" type="text" id="pagesize1" size="3">
+  页数:</label>
+<select name="select" id="select">
+  <option value="1">1</option>
+  <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+<label for="textfield">   页数:</label>
+ <input name="textfield" type="text" id="page1" size="3" value=1>
+ <input type="button" name="button2" id="button2" value="提交">
+</div>
+
+<!-- 翻页控件区域  end-->
+
+
+<!--  绑定翻页查询数据事件-->
+<script >
+
+var arr=getTestdata();
+var paggingGui1=new paggingGui();
+paggingGui1.list=arr;
+//paggingGui1.iniUi({pagesize:10,page:1,total:2000});
+paggingGui1.onSelectPage=function(param)
+{
+//	$("#datalist_div").html("");
+   //   clrOldPageData();//清空现有显示数据	 
+   if(!param.data)
+	   datas=this.list;
+	   else
+	  datas= param.data;
+	var cur_arr=getCurPageDatas(datas,param.page,this.pageSize);
+	for(curitem of cur_arr)
+	{
+	fpath="http://localhost:8088/"+curitem.path_webmode+"/"+curitem.filename;
+	console.log(fpath);
+		$("#img").attr("src",fpath);
+	}
+	
+	
+}
+//iniUi()==onSelectPage
+url="http://localhost:8088/dirlist";
+	fetch(url).then(response =>		response.json())
+  .then(data => {
+	console.log("---line1:");
+	console.log("---data:"+data);
+	console.log("---line2:");
+		   paggingGui1.list=data;
+		   paggingGui1.pageSize=1;
+		     paggingGui1.total=data.length;
+			 paggingGui1.iniUi();
+	       paggingGui1.onSelectPage({page:1,total:data.length });
+	}
+  )
+  .catch(e => console.log("Oops, error", e));
+	
+	
+	
+
+//paggingGui1.onSelectPage({pagesize:10,page:1,total:arr.length,data:arr});
+
+function getTestdata()
+{
+	var a=new Array();
+	for(i=1;i<99;i++)
+	{
+	a.push(i);	
+	}
+	return a ;
+	
+}
+
+</script>
+</body>
+</html>

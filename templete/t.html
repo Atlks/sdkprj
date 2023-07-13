@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<script type="text/javascript" src="../jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="jquery.tmpl.js"></script>
+
+<div id="div_demo">
+</div>
+<!-- -->
+<script id="demo" type="text/x-jquery-tmpl">
+    <div style="margin-bottom:10px;">
+    　　<span>${ID}</span>
+    　　<span style="margin-left:10px;">{{= Name}}</span>
+    　　<span style="margin-left:10px;">${Number(Num)+1}</span>
+    　　<span style="margin-left:10px;">${Status}</span>
+    </div>
+</script>
+<script type="text/javascript">
+　　var users = [{ ID: 'think8848', Name: 'Joseph Chan', Num: '1', Status: 1 }, { ID: 'aCloud', Name: 'Mary Cheung', Num: '2'}];
+　　$("#demo").tmpl(users).appendTo('#div_demo');
+</script>
+
+
+
+</body>
+</html>

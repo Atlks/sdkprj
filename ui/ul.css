@@ -1,0 +1,28 @@
+/* CSS Document */
+
+
+/*<!-- slt only not focus -->*/
+
+
+
+/**/
+ul li.sltOnly {
+	
+	-webkit-transform: translate3d(0,0,0) scale(1.1);
+    transform: translate3d(0,0,0) scale(1.1);
+  /*  box-shadow: 0px 20px 50px 10px rgba(0,16,64,.8);*/
+
+
+ 
+background-image:url(ul/bg.png);
+background-size: 100% 100%;
+	color: #FFF;
+	padding-left:45px;
+}
+
+recyxxx{
+	/*	background-color:rgba(128,128,128,0.8) !important;
+background-color:rgba(115,186,187,0.8) !important;
+background-image:linear-gradient(to right,rgba(115,186,187,1.0),rgba(71,150,200,1.0));
+*/
+}

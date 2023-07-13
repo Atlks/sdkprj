@@ -1,0 +1,11 @@
+/* CSS Document */
+
+.banner {
+	height:178;
+}
+.banner { position: relative; overflow: auto; }
+   
+        .banner ul li { float: left; height:178px; }
+		 .banner li { list-style: none; height:178px; }
+
+

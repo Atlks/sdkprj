@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ <link rel="stylesheet" type="text/css" href="../js/themes/default/easyui.css"/>  
+    <link rel="stylesheet" type="text/css" href="../js/themes/icon.css"/>  
+	    <link rel="stylesheet" type="text/css" href="../js/demo/demo.css">
+
+
+<script language="JavaScript" type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+
+  <script type='text/javascript' src='/gialx/dwr/engine.js'></script>
+  <script type='text/javascript' src='/gialx/dwr/interface/SvsC.js'></script>
+
+ 
+
+  <script type='text/javascript' src='/gialx/dwr/util.js'></script>
+
+
+</head>
+
+<body>
+<form  action="probeEdit_behide.jsp" id="formx"  method="post"  data-options="fit:true" style="height:600px;padding:0px;">
+  <p>探头名称：
+    <input name="name" type="text" value="defname" id="name"    />
+    
+  </p>
+  <p>探头名称：
+    <input name="taim" type="text" value="2012-12-12 05:02:03" id="taim"    />
+  </p>
+  <p>
+    <input name="visible" type="checkbox" id="visible" value="1" />
+在网页上显示在线客服图标</p>
+  <p>
+
+    <input type="button" name="button" id="button" value="按钮" onclick="save()" />
+  </p>
+</form>
+
+
+<script >
+$(function () {
+ 
+
+// printLog("--o4a ini form ajax ret event:");
+//	$('#formx').form({
+//			success:function(data){
+//					$.messager.alert('Info', data, 'info');
+//			}
+//	});
+	
+});
+
+</script>
+
+
+  <script>
+  function save()
+  {
+	var obj=  dwr.util.getValues("formx");
+	alert(obj);
+	//SvsC.save(obj);
+	SvsC.save_pojo(obj);
+  }
+  function editLoad()
+  {
+	 SvsC. getOne(1,function(data)
+
+         {
+//dwr.util.setValue ("formx",data);
+//todox o7e not neecd formid
+ 		 	dwr.util.setValues (data);
+
+         });  
+	
+
+	
+  }
+  editLoad();
+  </script>
+</body>
+</html>

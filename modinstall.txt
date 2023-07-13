@@ -1,0 +1,14 @@
+demjson
+
+
+ pip install requests
+ 
+  pip install demjson
+  
+    pip install pymysql
+	
+	    pip install etree
+		
+	 pip install  lxml
+	 
+		 pip install BeautifulSoup

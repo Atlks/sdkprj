@@ -1,0 +1,33 @@
+/* CSS Document */
+
+.ui-effects-transfer {
+	border: 5px dashed #F03;
+border-radius:14px;
+
+
+ 
+  
+}
+
+
+.floatEff
+{
+ 
+	 
+transition:width 2s, height 2s,transform 2s;
+ 
+}
+
+.floatEff:hover
+{
+	 
+width:100px;
+height:50px;
+ transform:rotate(360deg);
+  box-shadow:0 0 20px #0CC;  
+
+
+}
+
+
+  .picx{background: red;width: 120px;height:160px;}

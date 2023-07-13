@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+-----jensh wmp plugin, 360 chrome/ie mode all cant .
+<object classid="CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6" type="application/x-oleobject" height="200" width="300"> 
+<param name="url" value="http://192.168.1.33/vod/uploadf/1011_101517_996.rmvb" /> 
+<param name="autostart" value="false" /> 
+<param name="showstatusbar" value="true" /> 
+<param name="showtracker" value="true" /> 
+<param name="showcontrols" value="true" /> 
+<param name="uimode" value="full"/> 
+
+ </object>
+ ---embed    360 ie mode only 
+  <embed width="200" height="100"     src="http://192.168.1.33/vod/uploadf/1011_101517_996.rmvb" ></embed>
+ ---real plugin   360 chrome/ie mode all cant .
+ <object id="video" width="200" height=100" border="0" classid="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA">
+<param name="ShowDisplay" value="0">
+<param name="ShowControls" value="1">
+<param name="AutoStart" value="1">
+<param name="AutoRewind" value="0">
+<param name="PlayCount" value="0"> 
+<param name="FileName" value="http://192.168.1.33/vod/uploadf/1011_101517_996.rmvb">
+</object>
+---vlc plgin 
+<object classid="clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8" codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+
+        width="320" height="240" events="True" id="vlc2">
+
+<param name="MRL" value="http://attilax:8888/vod/uploadf/0925mem1366-768.mov" />
+
+<param name="ShowDisplay" value="True" />
+
+<param name="Loop" value="False" />
+
+<param name="AutoPlay" value="True" />
+
+</object>
+</body>
+</html>

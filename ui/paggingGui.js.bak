@@ -1,0 +1,11 @@
+ 
+//	var o={	pagesize:10,page:page_val,keyword:””,rows:arr};
+//pagesize:10,page:1,keyword:”kwxxx”,cate_id:7
+function listPaf2(params)
+{
+	var curPage= parseInt(  $("#page_ui").text(),10);
+	var page_val=curPage+1;
+	params.page=page_val;
+     listPaf1(params);
+	 $("#page_ui").text(page_val);
+}

@@ -1,0 +1,23 @@
+/* CSS Document */
+
+ .b2_cloud {
+	 position:absolute;
+    left: 0px;
+    top:40px;
+    opacity:0;
+    
+   /* -webkit-transition: top .3s linear .4s, opacity 1s linear .3s;
+	   transition: top .3s linear .4s, opacity 1s linear .3s;*/
+}
+.b2_cloud_finish {
+	  position:absolute; 
+  opacity:1;
+  left:2000px;
+   top:40px;
+    
+	-moz-transition: all 10s linear .4s,opacity 2s linear .3s; /* Firefox 4 */
+-webkit-transition:  all 10s linear .4s,opacity 2s linear .3s; /* Safari 和 Chrome */
+-o-transition:  all 10s linear .4s,opacity 2s linear .3s; /* Opera */
+	transition:  all 10s linear .4s,opacity 2s linear .3s;
+}
+

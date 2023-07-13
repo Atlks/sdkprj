@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ul ,li{
+	list-style:none;
+		
+}
+ul ,svg{
+	width:350px;
+	height:350px;
+	background-color:#CFCFCF;
+	margin:0px;
+	padding:0px;
+	
+}
+.node {
+	background-color:#48AAFB;
+	height:70px;
+	width:70px;
+	border-radius:50px;
+	line-height:70px;
+	text-align:center;
+	
+	
+}
+.nodex{
+	background-color:#F98C20;
+	height:50px;
+	width:50px;
+	border-radius:50px;
+}
+</style>
+</head>
+
+<body>
+<script src="../jquery-1.10.2.min.js"></script>
+<ul  style="position:relative">
+<li  class="nodex" style="position:absolute">产品</li>
+<li class="node" style="position:absolute;" >项目1</li>
+<li class="node" style="position:absolute;" >prj2</li>
+
+<li class="node" style="position:absolute;" >项目3</li>
+
+<li class="node" style="position:absolute;" >ext_prod1</li>
+
+<li class="node" style="position:absolute;" >项目5</li>
+
+<li>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <line class="nodeLine"   style="stroke:rgb(255,0,0);stroke-width:5" />
+	  <line  class="nodeLine"  x1="0" y1="50" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
+	   <line  class="nodeLine"  x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
+	    <line  class="nodeLine"  x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
+		 <line  class="nodeLine"  x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
+	 
+</svg>
+</li>
+
+</ul>
+    <script>
+		
+		$(".nodex").css("top","155px").css("left","155px");
+		var r=100;
+		var rad=0;
+		
+	var arr=	$("ul .node");
+	var line_arr=$("ul .nodeLine");
+	var span=360/arr.length;
+	for(var i=0;i<arr.length;i++)
+	{
+		var node=arr[i];
+		var x0=$(".nodex").position().left+$(".nodex").width()/2;
+		var y0=$(".nodex").position().top+$(".nodex").height()/2;;
+		var x1=	   x0   +   r   *Math. cos(rad   *   3.14   /180   ) 
+		var y1   =   y0   +   r   *   Math.sin(rad   *   3.14   /180   )  
+		var left1=x1-$(".node").width()/2;
+		var top1=y1-$(".node").height()/2;
+	//	var 
+	//	var xy_css="left:$left$px;top:$top$px;".replace("$left$",left1).replace("$top$",top1);
+		$(node).css("left",left1+"px").css("top",top1+"px");
+	//	var li='<li class="node" style="position:absolute;$css$" ></li>'.replace("$css$",xy_css);
+   //   	$("ul").append(li);
+   
+  		var line= line_arr[i];
+		if(line)
+			$(line).attr("x1",x1).attr("y1",y1).attr("x2",x0).attr("y2",y0);
+			//.css("position","absolute")
+	    rad=rad+span;
+	}
+	
+	
+
+	 
+	
+
+	
+	</script>  
+      
+      <div class="node"></div>        <div class="node"></div>        <div class="node"></div>
+        <div class="node"></div>
+      <div class="nodex"></div>        <div class="node"></div>
+      <div class="node"></div>
+      <div class="node"></div>      <div class="node"></div></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

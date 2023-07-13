@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="JavaScript" type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script src="js/angular.min.js"></script>
+
+ 
+
+</head>
+
+<body>
+<form  action="probeEdit_behide.jsp" id="formx"  method="post"  data-options="fit:true" style="height:600px;padding:0px;">
+  <p>探头名称：
+    <input name="name" type="text" value="默认名称" id="name"    />
+    <input type="submit" name="button" id="button" value="提交" />
+  </p>
+  <p>
+  <script>
+  function btnClik(){
+	  alert();
+   $('#tabid1').scope().listO7 = [ 
+        {"url":"urlxxx", "description":"url 01 description"}];
+ 
+  $('#tabid1').scope().$digest();
+  }
+  </script>
+    <input type="button" name="button2" id="button2" value="按钮"  onclick="btnClik()"/>
+  </p>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" id="tabid1" ng-controller="listCtrl">
+    <tr>
+      <td width="25%">id</td>
+      <td width="65%">文件</td>
+      <td width="10%">名称</td>
+    </tr>
+     <tr ng-repeat="itemO7 in listO7">
+
+      <td>{{itemO7.url}}---------</td>
+
+      <td>{{itemO7.description}}</td>
+
+      <td>aaa</td>
+
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</form>
+
+<script>
+
+function listCtrl($scope) { 
+
+    $scope.listO7 = [ 
+
+        {"url":" image_01.png", "description":"url 01 description"}, 
+
+        {"url":" image_02.png", "description":"url 02 description"}, 
+
+        {"url":" image_03.png", "description":"url 03 description"}, 
+
+        {"url":" image_04.png", "description":"url 04 description"}, 
+
+        {"url":" image_05.png", "description":"Image 05 description"} 
+
+    ]; 
+
+} 
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script type="text/javascript" src="validerOaf.js"></script>
+<span class="tdr">
+<input type="text"
+                                            class="Wdate input-text required ati-validatebox " onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"  
+                                            id="date1" data-options="required:true,novalidate:true,missingMessage:日期间区段不能为空的',deltaX:50,delay:20000" />
+</span>
+<script>
+//
+
+try{
+	
+	 validOafa();
+	 alert("other ...");
+}catch(e){
+	
+	alert(e instanceof ValidException);
+	if (e instanceof ValidException) 
+	{
+	 	alert(e.msg);
+		 throw "ok...";
+	}
+	//return;
+	
+}
+	 
+	 
+	 
+	 
+
+</script>
+
+</body>
+</html>

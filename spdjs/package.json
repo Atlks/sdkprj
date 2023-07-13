@@ -1,0 +1,43 @@
+{
+    "name": "xxx",
+    "version": "0.0.0",
+    "scripts": {
+        "test": "mocha --reporter spec  --exit --globals  csvFile,l  jsdk/unittest.js"
+    },
+    "devDependencies": {
+        "@google-cloud/translate": "^5.3.0",
+        "async": "^3.2.0",
+        "async-stream-reader": "^1.2.0",
+        "cheerio": "^1.0.0-rc.3",
+        "chromedriver": "^80.0.1",
+        "feed": "^4.1.0",
+        "geckodriver": "^1.19.1",
+        "google-translate-api": "^2.3.0",
+        "http": "0.0.0",
+        "line-reader": "^0.4.0",
+        "log4js": "^6.1.2",
+        "mysql": "^2.18.1",
+        "openssl-self-signed-certificate": "^1.1.6",
+        "request": "^2.88.2",
+        "selenium-webdriver": "^4.0.0-alpha.5",
+        "translate-api": "^0.3.18",
+        "util": "^0.12.2",
+        "ws": "^7.2.3",
+        "youdao-fanyi": "^2.0.0"
+    },
+    "dependencies": {
+        "async": "^3.2.0",
+        "async-stream-reader": "^1.2.0",
+        "cheerio": "^1.0.0-rc.3",
+        "chromedriver": "^80.0.1",
+        "feed": "^4.1.0",
+        "geckodriver": "^1.19.1",
+        "http": "0.0.0",
+        "line-reader": "^0.4.0",
+        "log4js": "^6.1.2",
+        "mysql": "^2.18.1",
+        "request": "^2.88.2",
+        "selenium-webdriver": "^4.0.0-alpha.5",
+        "util": "^0.12.2"
+    }
+}
