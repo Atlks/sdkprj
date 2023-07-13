@@ -1,0 +1,73 @@
+$def with (rs,flds,tit,con,art)
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>HTML textarea tag</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Keywords" content="HTML, Python, CSS, SQL, JavaScript, How to, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, W3.CSS, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Data Science, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Exercises, Courses, Lessons, References, Examples, Learn to code, Source code, Demos, Tips, Website">
+<meta name="Description" content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more.">
+<meta property="og:image" content="https://www.w3schools.com/images/w3schools_logo_436_2.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="436">
+<meta property="og:image:height" content="228">
+<meta property="og:description" content="W3Schools">
+<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[name="content1"]', {
+				cssPath : '../plugins/code/prettify.css',
+				uploadJson : '../php/upload_json.php',
+				fileManagerJson : '../php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				}
+			});
+			prettyPrint();
+		});
+	</script>
+</head>
+<body>
+
+文章编辑
+
+
+
+
+<div style="display: none">
+<p style="display:none">
+    $rs
+    $flds
+    $art
+</p>
+</div>
+<p>
+	<form action="/editsave" method="post">
+		<input type="hidden" value="$art['id']" name="id" / >
+    <input value="$tit" name="tit" / >
+    <p></p>
+    <textarea name="content1" id="w3review" name="w3review" rows="25" cols="200">
+        $con
+        </textarea>
+
+		<button >ok</button>
+    </form>
+</p>
+ 
+
+ 
+
+</body>
