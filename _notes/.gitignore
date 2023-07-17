@@ -1,0 +1,9 @@
+/.idea
+/.vscode
+*.log
+/node_modules
+node_modules
+public/trend.jpg
+*.7z
+*.rar
+nginx.htaccess
