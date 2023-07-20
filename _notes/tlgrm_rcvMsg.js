@@ -3,8 +3,9 @@
 ////////   npm install node-telegram-bot-api
 
 $phpexe = "C:\\phpstudy_pro\\Extensions\\php\\php7.4.3nts\\php.exe";
-$tlghr_msg_hdl = " C:\\w\\jbbot\\tlgrmHdl_debao.php ";
-const token = '5464498785:AAGtLv-M-RKgRoIh5G3XEfkdqkCPiVBB1NA';
+$tlghr_msg_hdl = __dirname + "\\tlgrmHdl_debao.php ";
+const token = '6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps';
+//chkbot
 
 
 
@@ -18,9 +19,8 @@ bot.on('message', (msg) => {
     bot.sendMessage(msg.chat.id, 'Received your message');
 
 
-    $fname = Math.random();
-    writeFileSyncx("./tmp/" + $fname + ".json", JSON.stringify(msg));
-    execSyncx($phpexe + " " + $tlghr_msg_hdl + " " + $fname);
+    $param_rf_addr = setVal(msg);
+    execSyncx($phpexe + " " + $tlghr_msg_hdl + " " + $param_rf_addr);
     console.log(999)
 });
 
@@ -49,7 +49,12 @@ bot.on('message', (msg) => {
 
 
 
+function setVal(Prm) {
+    $fname = Math.random();
+    writeFileSyncx("./tmp/" + $fname + ".json", JSON.stringify(Prm));
+    return $fname;
 
+}
 
 
 

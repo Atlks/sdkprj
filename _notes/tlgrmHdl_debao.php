@@ -2,7 +2,7 @@
 
 //  C:\phpstudy_pro\Extensions\php\php7.4.3nts\php.exe    C:\w\jbbot\tlgrm.php
 //$chat_id = -960237539;
-$bot_token = "5464498785:AAGtLv-M-RKgRoIh5G3XEfkdqkCPiVBB1NA";
+$bot_token = "6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps";  //chkbt
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -23,13 +23,35 @@ $msg_tmplt=$rows[0]['message'];
 
 //  replce
 $uname='@'.$json['from']['username'];
+$nnkname=''.$json['from']['first_name'];
+$grpname=$json['chat']['title'];
 $today = date('Y/m/d H:i:s');
 $msg_tmplt=str_replace('【交易方】' ,$uname,$msg_tmplt );
 $msg_tmplt=str_replace('【创建时间】' ,$today ,$msg_tmplt);
-  
-sendmsg($bot_token,$json['chat']['id'] ,$msg_tmplt);
+$msg_tmplt=str_replace('@昵称' ,$nnkname ,$msg_tmplt);$msg_tmplt=str_replace('@grp' ,$grpname ,$msg_tmplt);
+//sendmsg($bot_token,$json['chat']['id'] ,$msg_tmplt);
+
+//replaymsg($bot_token,$json['chat']['id'] ,$msg_tmplt);
+
+$rplmsgid=$json['message_id'];$chat_id=$json['chat']['id'];$msg=$msg_tmplt;
+echo $url_tmp;
+$url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?reply_to_message_id=$rplmsgid&chat_id=$chat_id&text=".urlencode($msg);
+echo file_get_contents($url_tmp);
 
 
+
+
+if ($msg_txt == "余额") {
+    $uid = $json["from"]["id"];
+    $fstname = $json["from"]["first_name"];
+    $sendmsg ="用户ID: $uid \r\n用户名:  $fstname \r\n余额: 0 \r\n输赢: 0";
+    echo  $sendmsg;
+    $msg_urlcode= urlencode($sendmsg );
+    $msg_url_tlgrm = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=$msg_urlcode";
+    echo $msg_url_tlgrm;
+    //send
+    file_get_contents($msg_url_tlgrm);
+}
 
 
 function var_dump_local($o){
@@ -72,3 +94,14 @@ function sendmsg($bot_token,$chat_id, $msg)
 
     echo file_get_contents($url_tmp);
 }
+
+function replaymsg($bot_token,$chat_id, $msg)
+{
+    $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?reply_to_message_id=$rplmsgid&chat_id=$chat_id&text=".urlencode($msg);
+    echo $url_tmp;
+
+    echo file_get_contents($url_tmp);
+}
+
+
+  

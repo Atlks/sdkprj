@@ -5,6 +5,10 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/autoload.php';
 include   __DIR__.'/vendor/topthink/think-helper/src/helper.php';
 
+
+echo date('Y-m-d H') ;
+file_put_contents(date('Y-m-d H'),"111".PHP_EOL, FILE_APPEND);
+
 //$message = \think\facade\Db::query("select * from message where name='我的报备' ");
 // 
 // 
