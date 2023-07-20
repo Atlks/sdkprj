@@ -13,6 +13,64 @@ $json = json_decode($msgg, true); // decode the JSON into an associative array
 $msg_txt = $json['text'];
 echo $msg_txt ;
 
+echo 5400;
+echo  $json['chat']['type'];
+$rplmsgid=$json['message_id'];
+$chat_id=$json['chat']['id'];   
+
+//-----------------------add remv keyword
+$msg_t_arr=   explode(" ", $msg_txt);
+if( $msg_t_arr[0]=='/关键词' &&  $json['chat']['all_members_are_administrators'] )
+{
+$name=$msg_t_arr[1];
+$msg_db=$msg_t_arr[2];
+    $connstr=['mysql:host=localhost;dbname=jb_bot;charset=utf8mb4', 'root', 'root'];
+    $qry="insert message set id=unix_timestamp(), name='$name' ,message='$msg_db' ";
+    pdo_exec($qry,$connstr);
+   
+    return;
+}
+
+if( $msg_t_arr[0]=='/关键词删除' &&  $json['chat']['all_members_are_administrators'] )
+{
+$name=$msg_t_arr[1];
+$msg_db=$msg_t_arr[2];
+    $connstr=['mysql:host=localhost;dbname=jb_bot;charset=utf8mb4', 'root', 'root'];
+    $qry="delete from  message where    name='$name'  ";
+    pdo_exec($qry,$connstr);
+    replaymsg($bot_token,$chat_id, "删除关键词成功",$rplmsgid);
+    return;
+}
+
+
+
+
+if($json['chat']['type']==='group' &&  $msg_txt=='卡商')
+{
+return;
+}
+if($json['chat']['type']==='private' &&  $msg_txt=='卡商')
+{
+
+
+ 
+    $connstr=['mysql:host=localhost;dbname=jb_bot;charset=utf8mb4', 'root', 'root'];
+    $qry="select * from message where name='$msg_txt' ";
+    $rows= fetchAll_queryRows_pdo($qry,$connstr);
+    $msg_tmplt=$rows[0]['message'];
+
+
+    $rplmsgid=$json['message_id'];
+    $chat_id=$json['chat']['id'];   
+    replaymsg($bot_token,$chat_id, $msg_tmplt,$rplmsgid);
+
+    return;
+}
+
+if($json['chat']['type']==='group' &&  $msg_txt=='白资')
+{
+return;
+}
 
   
 // db
@@ -63,6 +121,29 @@ function var_dump_local($o){
 
 }
 
+function pdo_exec($sql, $pdo_conn_str )
+{
+    global $pdo;
+    $pdo = new PDO($pdo_conn_str[0],  $pdo_conn_str[1],$pdo_conn_str[2] );
+    echo "852\r\n";
+    var_dump_local($pdo);
+    echo "853\r\n";
+    global $main;
+    var_dump_local( PHP_EOL . $sql . PHP_EOL );
+    //  $main->info($sql);
+    global $glb;
+    $glb['sql'] = $sql;
+    var_dump_local($glb);
+    global $pdo; //use global var
+     $r=$pdo->exec($sql);
+    var_dump_local($r);
+   return    $r;
+
+
+
+
+    // return array($pdo, $rows);
+}
 
 
 function fetchAll_queryRows_pdo($sql, $pdo_conn_str)
@@ -95,7 +176,7 @@ function sendmsg($bot_token,$chat_id, $msg)
     echo file_get_contents($url_tmp);
 }
 
-function replaymsg($bot_token,$chat_id, $msg)
+function replaymsg($bot_token,$chat_id, $msg,$rplmsgid)
 {
     $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?reply_to_message_id=$rplmsgid&chat_id=$chat_id&text=".urlencode($msg);
     echo $url_tmp;
