@@ -5,7 +5,7 @@
 $bot_token = "6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps";  //chkbt
 
 require __DIR__ . '/vendor/autoload.php';
-
+require_once __DIR__ . '/sdk/db.php';require_once __DIR__ . '/sdk/tlgrm.php';require_once __DIR__ . '/sdk/core.php';
   
 $msgg = file_get_contents(__DIR__."/tmp/". $_SERVER['argv'][1].".json");
 echo $msgg;
@@ -18,9 +18,24 @@ echo  $json['chat']['type'];
 $rplmsgid=$json['message_id'];
 $chat_id=$json['chat']['id'];   
 
+
+
+if ($msg_txt == "余额") {
+    $uid = $json["from"]["id"];
+    $fstname = $json["from"]["first_name"];
+    $sendmsg ="用户ID: $uid \r\n用户名:  $fstname \r\n余额: 0 \r\n输赢: 0";
+    echo  $sendmsg;
+    $msg_urlcode= urlencode($sendmsg );
+    $msg_url_tlgrm = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=$msg_urlcode";
+    echo $msg_url_tlgrm;
+    //send
+    file_get_contents($msg_url_tlgrm);
+    return;
+}
+
 //-----------------------add remv keyword
 $msg_t_arr=   explode(" ", $msg_txt);
-if( $msg_t_arr[0]=='/关键词' &&  $json['chat']['all_members_are_administrators'] )
+if( $msg_t_arr[0]=='关键词添加' &&  $json['chat']['all_members_are_administrators'] )
 {
 $name=$msg_t_arr[1];
 $msg_db=$msg_t_arr[2];
@@ -31,7 +46,7 @@ $msg_db=$msg_t_arr[2];
     return;
 }
 
-if( $msg_t_arr[0]=='/关键词删除' &&  $json['chat']['all_members_are_administrators'] )
+if( $msg_t_arr[0]=='关键词删除' &&  $json['chat']['all_members_are_administrators'] )
 {
 $name=$msg_t_arr[1];
 $msg_db=$msg_t_arr[2];
@@ -44,7 +59,7 @@ $msg_db=$msg_t_arr[2];
 
 
 
-
+//-------------------卡商和白资
 if($json['chat']['type']==='group' &&  $msg_txt=='卡商')
 {
 return;
@@ -72,7 +87,7 @@ if($json['chat']['type']==='group' &&  $msg_txt=='白资')
 return;
 }
 
-  
+////    n yao bnaobei
 // db
 $connstr=['mysql:host=localhost;dbname=jb_bot;charset=utf8mb4', 'root', 'root'];
 $qry="select * from message where name='$msg_txt' ";
@@ -99,90 +114,4 @@ echo file_get_contents($url_tmp);
 
 
 
-if ($msg_txt == "余额") {
-    $uid = $json["from"]["id"];
-    $fstname = $json["from"]["first_name"];
-    $sendmsg ="用户ID: $uid \r\n用户名:  $fstname \r\n余额: 0 \r\n输赢: 0";
-    echo  $sendmsg;
-    $msg_urlcode= urlencode($sendmsg );
-    $msg_url_tlgrm = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=$msg_urlcode";
-    echo $msg_url_tlgrm;
-    //send
-    file_get_contents($msg_url_tlgrm);
-}
 
-
-function var_dump_local($o){
-    global  $showDbgEcho;
-    //   if($showDbgEcho)
-    //  echo 'file_exists(../localtest)：：：'.file_exists(__DIR__."/../localtest");
-    //    if (file_exists(__DIR__."/../localtest99"))
-           var_dump($o);
-
-}
-
-function pdo_exec($sql, $pdo_conn_str )
-{
-    global $pdo;
-    $pdo = new PDO($pdo_conn_str[0],  $pdo_conn_str[1],$pdo_conn_str[2] );
-    echo "852\r\n";
-    var_dump_local($pdo);
-    echo "853\r\n";
-    global $main;
-    var_dump_local( PHP_EOL . $sql . PHP_EOL );
-    //  $main->info($sql);
-    global $glb;
-    $glb['sql'] = $sql;
-    var_dump_local($glb);
-    global $pdo; //use global var
-     $r=$pdo->exec($sql);
-    var_dump_local($r);
-   return    $r;
-
-
-
-
-    // return array($pdo, $rows);
-}
-
-
-function fetchAll_queryRows_pdo($sql, $pdo_conn_str)
-{
-    $pdo = new PDO($pdo_conn_str[0],  $pdo_conn_str[1],$pdo_conn_str[2] );
-    global $main;
-    var_dump_local( PHP_EOL . $sql . PHP_EOL );
-    //  $main->info($sql);
-    global $glb;
-    $glb['sql'] = $sql;
-    var_dump_local($glb);
- 
-    $stmt = $pdo->query($sql);
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    var_dump_local( 'qury cnt:' . $stmt->rowCount() . PHP_EOL );
-    return $rows;
-    // return array($pdo, $rows);
-}
-
-
-
-
-function sendmsg($bot_token,$chat_id, $msg)
-{
-    $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=".urlencode($msg);
-    echo $url_tmp;
-
-    echo file_get_contents($url_tmp);
-}
-
-function replaymsg($bot_token,$chat_id, $msg,$rplmsgid)
-{
-    $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?reply_to_message_id=$rplmsgid&chat_id=$chat_id&text=".urlencode($msg);
-    echo $url_tmp;
-
-    echo file_get_contents($url_tmp);
-}
-
-
-  
