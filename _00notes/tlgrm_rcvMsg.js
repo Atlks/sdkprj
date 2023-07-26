@@ -89,5 +89,21 @@ function execSyncx(cmd) {
     console.log(cmd);
     const { exec } = require('child_process');
     var execSync = require('child_process').execSync;
-    execSync(cmd)
+
+
+
+    try {
+        const stdout = execSync(cmd)
+        console.log(`stdout: ${stdout}`);
+
+    } catch (err) {
+        //not take effec
+        console.log("output maybe err", err)
+            // console.log("sdterr", err.stderr)
+    }
+
+
+    //   process.stderr.on('data', () => {
+    //      console.log("stderr436", data);
+    //   })
 }
