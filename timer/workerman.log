@@ -1,0 +1,36 @@
+2023-07-26 21:23:25 pid:1 Error: Undefined constant "task_main" in C:\Users\attil\PhpstormProjects\untitled\async.php:18
+Stack trace:
+#0 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(2387): {closure}()
+#1 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1397): Workerman\Worker->run()
+#2 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1340): Workerman\Worker::forkWorkersForWindows()
+#3 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(539): Workerman\Worker::forkWorkers()
+#4 C:\Users\attil\PhpstormProjects\untitled\async.php(25): Workerman\Worker::runAll()
+#5 {main}
+2023-07-26 21:23:26 pid:1 Worker process terminated
+2023-07-26 21:23:51 pid:1 Error: Undefined constant "task_main" in C:\Users\attil\PhpstormProjects\untitled\async.php:18
+Stack trace:
+#0 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(2387): {closure}()
+#1 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1397): Workerman\Worker->run()
+#2 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1340): Workerman\Worker::forkWorkersForWindows()
+#3 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(539): Workerman\Worker::forkWorkers()
+#4 C:\Users\attil\PhpstormProjects\untitled\async.php(25): Workerman\Worker::runAll()
+#5 {main}
+2023-07-26 21:23:52 pid:1 Worker process terminated
+2023-07-26 21:24:06 pid:1 Error: Undefined constant "task_main" in C:\Users\attil\PhpstormProjects\untitled\async.php:36
+Stack trace:
+#0 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(2387): {closure}()
+#1 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1397): Workerman\Worker->run()
+#2 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1340): Workerman\Worker::forkWorkersForWindows()
+#3 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(539): Workerman\Worker::forkWorkers()
+#4 C:\Users\attil\PhpstormProjects\untitled\async.php(43): Workerman\Worker::runAll()
+#5 {main}
+2023-07-26 21:24:07 pid:1 Worker process terminated
+2023-07-26 21:25:25 pid:1 Error: Undefined constant "task_main" in C:\Users\attil\PhpstormProjects\untitled\async.php:36
+Stack trace:
+#0 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(2387): {closure}()
+#1 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1397): Workerman\Worker->run()
+#2 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(1340): Workerman\Worker::forkWorkersForWindows()
+#3 C:\Users\attil\PhpstormProjects\untitled\Workerman\Worker.php(539): Workerman\Worker::forkWorkers()
+#4 C:\Users\attil\PhpstormProjects\untitled\async.php(43): Workerman\Worker::runAll()
+#5 {main}
+2023-07-26 21:25:26 pid:1 Worker process terminated
