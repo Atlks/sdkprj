@@ -1,9 +1,8 @@
 
 <?php
 
-//  C:\phpstudy_pro\Extensions\php\php8.0.2nts\php.exe  composer.phar require    guzzlehttp/guzzle
-//namespace phpEther\Providers;
-require_once  'HttpProvider.php';
+namespace phpEther\Providers;
+
 use \phpEther\Providers\Etherscan\Request;
 
 /**
@@ -11,7 +10,7 @@ use \phpEther\Providers\Etherscan\Request;
  *
  * @license http://opensource.org/licenses/MIT
  */
-//use phpEther\Web3\Providers\HttpProvider;
+use phpEther\Web3\Providers\HttpProvider;
 class Etherscan extends HttpProvider implements Provider {
 	const API_URL = "https://api.etherscan.io/api";
 	const TESTNET_ROPSTEN = "ropsten";
@@ -26,7 +25,7 @@ class Etherscan extends HttpProvider implements Provider {
      *
      * @var string
      */
-    private $apiKeyToken='D9N8M9GJG5ISQ8TNKZV7TUXCMDFNQBVYCN';
+    private $apiKeyToken;
 
     /**
      * cURL request object.
@@ -49,7 +48,7 @@ class Etherscan extends HttpProvider implements Provider {
         $this->apiKeyToken = $apiKeyToken;
     }
 	
-	public   function getAPIUrl() {
+	public static function getAPIUrl() {
         if (is_null($this->net)) {
             return self::API_URL;
         }
@@ -63,23 +62,21 @@ class Etherscan extends HttpProvider implements Provider {
 	
 	public function request($req, $type = 'GET'){
 		$url = self::getAPIUrl();
-        echo $type."\r\n";
-        var_dump( $url);
-		$client = new \GuzzleHttp\Client([
-            'timeout' => 20,
-            'verify' => false
-        ]);
-	 	$req['apikey'] = $this->apiKeyToken;
-
-        echo json_encode($req)."\r\n";;
+		$client = new \GuzzleHttp\Client();
+		$req['apikey'] = $this->apiKeyToken;
 		$request = $type =='GET'?'query':'form_params';
-        var_dump('$request:'.$request) ;
+		try {
 			$response = $client->request($type, $url, [
 				$request => $req
 			]);
-
+		} catch (\GuzzleHttp\Exception\TransferException $e) {
+			$err =" Client Error > ". Psr7\str($e->getRequest());
+			if ($e->hasResponse()) {
+				$err.=" ". Psr7\str($e->getResponse());
+			}
+			throw new Exception ($err);
+		}
 		$json = json_decode($response->getBody());
-        echo  "\r\n".json_encode($json)."\r\n";;
         // Check for the Etherscan API error
         if (isset($json->error)) {
             throw new \Exception("Etherscan API error: {$json->error}");
@@ -142,7 +139,7 @@ class Etherscan extends HttpProvider implements Provider {
      *
      * @return array
      */
-    public function transactionList($address, $startBlock = 0, $endBlock = 99999999, $sort = "desc", $page = null, $offset = null) {
+    public function transactionList($address, $startBlock = 0, $endBlock = 99999999, $sort = "asc", $page = null, $offset = null) {
         $params = [
             'module' => "account",
             'action' => "txlist",

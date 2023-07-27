@@ -11,5 +11,21 @@ $balance_wei = $cls->balance('0x298d0042310dC1dC4ea30184fb61073776eB00eD');
 echo $balance_wei /(1000*1000*1000*1000*1000*1000);
 
 
+//echo json_encode($cls->transactionList('0x298d0042310dC1dC4ea30184fb61073776eB00eD'));
+
+
+
+//echo   $cls->getBlockReward(17783310) ;
+$blknum=17783310;
+$HexNum=dechex($blknum);
+$url="https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=0x$HexNum&boolean=true&apikey=VASRGU6XT768WSKI2VME6Z8ZK3GK5E3UDT";
+echo $url."\r\n";
+$t=file_get_contents($url) ;
+$json=json_decode($t,true);
+echo $json['result']['hash'];
+
+
+
+
 
 
