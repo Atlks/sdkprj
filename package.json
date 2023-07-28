@@ -1,0 +1,19 @@
+{
+    "name": "sdkprj_app",
+    "version": "1.0.0",
+    "description": "dscpb",
+    "main": "agt/dsktp.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "scripts": {
+
+        "start": "electron ."
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^25.3.2"
+    }
+}
