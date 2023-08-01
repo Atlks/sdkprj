@@ -1,6 +1,10 @@
 // JavaScript Document
 
-function getJsonLength(jsonData){ var jsonLength = 0; for(var item in jsonData){ jsonLength++; } return jsonLength; }
+o = { "a": 111 }
+    //json_encode
+console.log(JSON.stringify(o))
+
+function getJsonLength(jsonData) { var jsonLength = 0; for (var item in jsonData) { jsonLength++; } return jsonLength; }
 
 /*
 2. 浏览器支持的转换方式(Firefox，chrome，opera，safari，ie9，ie8)等浏览器：
@@ -15,74 +19,69 @@ var cmd='   ';
 
 
 
-function artTxt2obj(s)
-{
-var a=s.split("\r\n");
-var o={};
-var cache="";
-var k="";
-for(var i=0;i<a.length;i++)
-{
-	
-	var line=a[i];
-	if(line.indexOf("#")==0)
-	continue;
-//	var a1=line.split(":");
-	var idx=line.indexOf(":");
-	if(i==0)
-	{
-		 k=line.substr(0,idx);
-		 cache=line.substr(idx+1);
-		continue;	
-	}
-	
-	if( line.indexOf(":")>0)  //caontains
-	{
-		
-		if(k.length>0) 
-				o[k]=cache;	//finish last pre yg ..
-			
-				 k=line.substr(0,idx);
-				 cache=line.substr(idx+1);
-				continue;
-	 
-	//	  k=line.substr(0,idx);
-		//var v=line.substr(idx+1);
-		//o[k]=v;
-	//	cache=line.substr(idx+1);
-		
-	}else
-	{
-		cache=cache+line+"\r\n";
-	}
-	
+function artTxt2obj(s) {
+    var a = s.split("\r\n");
+    var o = {};
+    var cache = "";
+    var k = "";
+    for (var i = 0; i < a.length; i++) {
+
+        var line = a[i];
+        if (line.indexOf("#") == 0)
+            continue;
+        //	var a1=line.split(":");
+        var idx = line.indexOf(":");
+        if (i == 0) {
+            k = line.substr(0, idx);
+            cache = line.substr(idx + 1);
+            continue;
+        }
+
+        if (line.indexOf(":") > 0) //caontains
+        {
+
+            if (k.length > 0)
+                o[k] = cache; //finish last pre yg ..
+
+            k = line.substr(0, idx);
+            cache = line.substr(idx + 1);
+            continue;
+
+            //	  k=line.substr(0,idx);
+            //var v=line.substr(idx+1);
+            //o[k]=v;
+            //	cache=line.substr(idx+1);
+
+        } else {
+            cache = cache + line + "\r\n";
+        }
+
+    }
+    if (k.length > 0)
+        o[k] = cache; //last item.
+    //alert(JSON.stringify(o));
+    return o;
 }
-	if(k.length>0) 
-o[k]=cache;  //last item.
-//alert(JSON.stringify(o));
-return o;
+
+function SmpTxt2json(s) {
+    var o = {};
+    var a = s.split(",");
+    for (var i = 0; i < a.length; i++) {
+        var a2 = a[i].split(":");
+        o[a2[0]] = a2[1];
+
+    }
+    return o;
+
 }
-function SmpTxt2json(s)
-{
-	var o={};
-var a=s.split(",");
-for(var i=0;i<a.length;i++)
-{
-	var a2=a[i].split(":");
-	o[a2[0]]=a2[1];
-	
-}
-return o;
-	
-}
-function fmtObj(cmd,mapper,o){
-var maper_obj=	SmpTxt2json( mapper );
-	for(var itemx in o)
-	{
-		var key_in_str=maper_obj[itemx];
-		cmd=cmd.replace("@"+key_in_str+"@",o[itemx]);
-	}
-	return cmd;
+
+function fmtObj(cmd, mapper, o) {
+    var maper_obj = SmpTxt2json(mapper);
+    for (var itemx in o) {
+        var key_in_str = maper_obj[itemx];
+        cmd = cmd.replace("@" + key_in_str + "@", o[itemx]);
+    }
+    return cmd;
 }
 /*
  var s="###注释\r\n标题:tti标题标题标题标题标题\r\n人数:5\r\n月薪:2000-3000\r\n内容:\r\n内容内容内111\r\n容内容内容内容222\r\n";
@@ -97,4 +96,4 @@ var o=artTxt2obj(s);
   console.log(cmd);
   str.replace(new RegExp(replaceStr,'gm'),'')
   */
- // alert("aa".replace(new RegExp("a",'gm'),"b"));
+// alert("aa".replace(new RegExp("a",'gm'),"b"));

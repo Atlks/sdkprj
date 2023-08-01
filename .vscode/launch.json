@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\agt\\dsktp.js"
+            "program": "${file}"
         }
     ]
 }

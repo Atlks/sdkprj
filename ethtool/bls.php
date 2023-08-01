@@ -19,12 +19,23 @@ echo $balance_wei /(1000*1000*1000*1000*1000*1000);
 $blknum=17783310;
 $HexNum=dechex($blknum);
 $url="https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=0x$HexNum&boolean=true&apikey=VASRGU6XT768WSKI2VME6Z8ZK3GK5E3UDT";
-echo $url."\r\n";
-$t=file_get_contents($url) ;
+
+
+$t=http_get($url);
+
 $json=json_decode($t,true);
 echo $json['result']['hash'];
 
 
+
+
+function http_get($url)
+{
+    echo "\r\n".$url."\r\n";
+    $t=file_get_contents($url) ;
+    echo  "\r\n".$t."\r\n";
+    return $t;
+}
 
 
 

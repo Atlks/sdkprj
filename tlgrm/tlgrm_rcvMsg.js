@@ -6,7 +6,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '5464498785:AAGtLv-M-RKgRoIh5G3XEfkdqkCPiVBB1NA';
+//token = '6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps';
+//token = "6424319932:AAFuKlo4dxeraUYhiF1EY6PEn2ozTBVIYbc"; //nnbot
+token = '6134198347:AAEdHZUkmYrpm0RHUrzZaKK9d11SiEIhSUk'; //msg2024 nml msg recv 
+
+//6357469915: AAGyKxgsBJ4NmaazHG - 6 aiAuoodeT0gJmPA   //ssc2023 bot
+
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -20,5 +25,6 @@ bot.on('message', (msg) => {
 
     // send a message to the chat acknowledging receipt of their message
     bot.sendMessage(chatId, 'Received your message');
+    bot.sendMessage(chatId, JSON.stringify(msg));
     console.log(msg);
 });

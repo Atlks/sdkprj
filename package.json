@@ -8,12 +8,15 @@
         "test": "test"
     },
     "scripts": {
-
         "start": "electron ."
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "electron": "^25.3.2"
+    },
+    "dependencies": {
+        "node-fetch": "2.6",
+        "node-telegram-bot-api": "^0.61.0"
     }
 }

@@ -1,0 +1,31 @@
+
+comm、//Gamelogic
+
+记得   
+hash28 注释。。
+
+
+使用pc28 n gametype=0
+
+ctrL//Gamelogic
+<?php
+
+declare(strict_types=1);
+
+namespace app\controller;
+
+use think\Request;
+use think\swoole;
+use app\common\NNGameLogic as GL;
+
+
+haldle。php
+也有nngame逻辑
+ 
+ 
+ 
+ nn613.521.vip/setHook
+ 
+ http://nn613.521.vip/setHook
+ 
+ curl 127.0.0.1:9521/start
