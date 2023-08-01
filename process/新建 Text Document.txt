@@ -1,0 +1,11 @@
+// execSync
+const { exec } = require('child_process');
+
+
+
+//  bot 里面定时退出process  默认不能退出
+function myFunc(arg) {
+    process.exit(999)
+}
+
+setTimeout(myFunc, 5000, 'funky');
