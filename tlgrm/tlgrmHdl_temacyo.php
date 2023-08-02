@@ -42,7 +42,7 @@ $cyoName=$cyoName_arr[$cyo_idex-1];
 $cyo_num=$cyo_arr[1];
 
 $cyo_num_rply="数字".$cyo_num;
-if(is_numeric($cyo_num) )
+if(!is_numeric($cyo_num) )
     $cyo_num_rply=$cyo_num;   //大小单双
 
 
