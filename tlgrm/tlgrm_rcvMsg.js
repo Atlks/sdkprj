@@ -9,10 +9,10 @@ const TelegramBot = require('node-telegram-bot-api');
 // replace the value below with the Telegram token you receive from @BotFather
 //token = '6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps';
 //token = "6424319932:AAFuKlo4dxeraUYhiF1EY6PEn2ozTBVIYbc"; //nnbot
-token = '6540014740:AAHLjeevuyWdzyMEoXxX9GRTE1nUs4hc_pI'; //rcvmsg   rcvbot_bot
-token = '6605810782:AAF-V8dXriqJJxTaOfVxmf5KQY5S_P9yLs8'; //jbnn chk bot
-
-//token = '6648133077:AAFO0flf9bzoGxeWsQ_ugWpyHoelJLjwq1U'; //jbhash chkbot
+//token = '6540014740:AAHLjeevuyWdzyMEoXxX9GRTE1nUs4hc_pI'; //rcvmsg   rcvbot_bot
+//oken = '6605810782:AAF-V8dXriqJJxTaOfVxmf5KQY5S_P9yLs8'; //jbnn chk bot
+token = "6510408569:AAHrrbsKgCvklwiFje_TKPF-ABMz0kdxn2c" // msg2025
+    //token = '6648133077:AAFO0flf9bzoGxeWsQ_ugWpyHoelJLjwq1U'; //jbhash chkbot
 
 
 //6357469915: AAGyKxgsBJ4NmaazHG - 6 aiAuoodeT0gJmPA   //ssc2023 bot

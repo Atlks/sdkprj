@@ -1,0 +1,18 @@
+{
+    "message_id": 23,
+    "from": {
+        "id": 928719578,
+        "is_bot": false,
+        "first_name": "喜",
+        "last_name": "剧",
+        "username": "xiju12345"
+    },
+    "chat": {
+        "id": -987135836,
+        "title": "ssc时时彩测试",
+        "type": "group",
+        "all_members_are_administrators": true
+    },
+    "date": 1691071076,
+    "text": "1\/大\/200"
+}

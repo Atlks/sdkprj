@@ -1,0 +1,13 @@
+tpx dbg 
+
+
+open dbg mode...
+close cache 
+
+
+
+将自定义函数放置于项目函数：MyAPP/Common/Common.php下，也可以直接调用，在控制器和MODEL类中都可以。
+
+如果按照上面方法调用出错，可能是缓存的原因，删除掉 runtime文件夹即可，如果程序调试阶段，可以在项目入口文件中设置不生成缓存，设置方法：
+
+define(‘NO_CACHE_RUNTIME’,True);
