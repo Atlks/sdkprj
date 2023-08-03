@@ -5,7 +5,7 @@
 //1/1/1
 
 $wefa_rex = '特码球玩法=\d\/\d\/\d+,特码球大小单双玩法=\d[大|小|单|双]\d+,和值大小单双玩法=和[大|小|单|双]\d+,龙虎和玩法=[龙|虎|和]\d+,前后三玩法=[前|后][豹|顺|对|半|杂]\d+';
-$wefa_rex = '特码球玩法=\d\/\d\/\d+,特码球大小单双玩法=\d[大|小|单|双].*,和值大小单双玩法=和[大|小|单|双]\d+,龙虎和玩法=[龙|虎|和]\d+,前后三玩法=[前|后][豹|顺|对|半|杂]\d+';
+$wefa_rex = '特码球玩法=\d\/\d\/\d+,特码球大小单双玩法=\d[大|小|单|双].*,和值大小单双玩法=和[大|小|单|双]\d+,龙虎和玩法=[龙|虎|和]\d+,前后三玩法=[前|后][豹|顺|对|半|杂].*';
 
 //echo preg_match("/\d\/\d\/\d+/", "1/1/33");
 //die();
@@ -23,21 +23,75 @@ $str = "3单33";
 
 //print_r(str_splitX("3单33"));
 
-function str_splitX($str)
-{
-    //support chinese char,,,,  str_split not spt chins char
-    return  preg_split('/(?<!^)(?!$)/u', $str);
-}
+
 echo PHP_EOL;
-var_dump(dwijyo("1单33", "12745"));
+//var_dump(dwijyo("1单33", "12745"));
 $glb = [];
-var_dump(dwijyo("4/4/33", "12745"));
+//var_dump(dwijyo("4/4/33", "12745"));
+//var_dump(dwijyo("后顺33", "32765"));
+var_dump(dwijyo("和单", "32765"));
+
+
+function getWefa($numb)
+{
+
+
+    // 和值单独判断.bcs rex cant ok... in php 
+    if (startsWith($numb, "和"))
+        return  "和值大小单双玩法";
+
+    global $wefa_rex;
+    $a = explode(",", $wefa_rex);
+
+    $arr = $a;
+
+
+
+    foreach ($arr as $key => $value) {
+        $a100 = explode("=", $value);
+        $wefa = $a100[0];
+        $rx = $a100[1];
+
+        echo PHP_EOL;
+        echo "----------------------------------";
+        echo PHP_EOL;
+        print_r($numb);
+        print_r($wefa);
+        print_r($rx);
+        $p = '/'  . $rx . '/';
+        print_r($p);
+
+        if (preg_match($p, $numb)) {
+            print_r("     match..");
+            return   $wefa;
+        } else
+            print_r("   not match..");
+    }
+
+    $arr = array_map(function ($item) {
+        $a100 = explode("=", $item);
+        return $item . '_i';
+    }, $a);
+}
+
 function dwijyo($betNum,   $bonusNum)
 {
     echo PHP_EOL;
     $wefa = getWefa($betNum);
+    //global $glb;
+    $glb['wefa'] = $wefa;
+    print_r($glb);
     print_r($wefa);
-    if ($wefa == "特码球大小单双玩法") {
+    if ($wefa == "特码球玩法") {
+        $cyoIdex = str_split($betNum)[0];
+        print_r($cyoIdex);
+        //开奖号码
+        $cyoNum = str_split($bonusNum)[$cyoIdex - 1];
+        print_r($cyoNum);
+
+        $betNum = explode("/", $betNum)[1];
+        return  $betNum ==    $cyoNum;
+    } else if ($wefa == "特码球大小单双玩法") {
         $cyoIdex = str_split($betNum)[0];
         print_r($cyoIdex);
         $kaij_num_curPos = str_split($bonusNum)[$cyoIdex - 1];
@@ -47,18 +101,18 @@ function dwijyo($betNum,   $bonusNum)
         print_r($dasyaodeshwo);
 
 
-        $kaij_num = getKaijNum_Dasyaodeshwo($kaij_num_curPos);
+        $kaij_num = getKaijNumArr_Dasyaodeshwo($kaij_num_curPos);
         print_r($kaij_num);
         return  in_array($dasyaodeshwo, $kaij_num);
-    } else if ($wefa == "特码球玩法") {
-        $cyoIdex = str_split($betNum)[0];
-        print_r($cyoIdex);
-        //开奖号码
-        $cyoNum = str_split($bonusNum)[$cyoIdex - 1];
-        print_r($cyoNum);
+    } else if ($wefa == "和值大小单双玩法") {
+        $betnum = str_splitX($betNum)[1];
 
-        $betNum = explode("/", $betNum)[1];
-        return  $betNum ==    $cyoNum;
+        $kaij_num = getKaijNumArr_hezDasyods($bonusNum);
+        print_r(" kaij num::");
+        print_r($kaij_num);
+
+
+        return  in_array($betnum, $kaij_num);
     } else if ($wefa == "龙虎和玩法") {
         $betnum = str_splitX($betNum)[0];
 
@@ -78,18 +132,38 @@ function dwijyo($betNum,   $bonusNum)
         $betnum = str_delNum($betNum);
         if ($betnum == "后顺")
             $betnum = "后三顺子";
+
+
+        print_r(" betnum num::" . $betnum);
+        //  die();
         //开奖号码
         //  $kaij_num=
 
-        $kaij_num = getKaijNum_cyehose($bonusNum);
-
+        $kaij_num = getKaijNumArr_cyehose($bonusNum);
+        print_r(" kaij num::");
+        print_r($kaij_num);
 
 
         return  in_array($betnum, $kaij_num);
     }
 }
+function getKaijNumArr_hezDasyods($bonusNum)
+{
+    $a2 = str_split($bonusNum);
+    $val = array_sum($a2);
+    if ($val % 2 == 0)
+        $a[] = "双";
+    else
+        $a[] = "单";
 
-function getKaijNum_Dasyaodeshwo($bonusNum)
+    if ($val > 23)
+        $a[] = "大";
+    else
+        $a[] = "小";
+    return $a;
+}
+
+function getKaijNumArr_Dasyaodeshwo($bonusNum)
 {
     $glb = [];
     //   if($bonusNum)
@@ -114,7 +188,7 @@ function getKaijNum_Dasyaodeshwo($bonusNum)
     print_r($glb);
     return $a;
 }
-function getKaijNum_cyehose($bonusNum)
+function getKaijNumArr_cyehose($bonusNum)
 {
     $cye3 = substr($bonusNum, 0, 3);
     $ho3 = substr($bonusNum, 2, 3);
@@ -163,23 +237,17 @@ function isDwizi($num)
 
 function isShunzi($num)
 {
-    $num = orderx($num);
+    $num = order_str($num);
     $a = ['123', '234', '345', '456', '567', '678', '789', '890', '901', '012', '123'];
     return in_array($num, $a);
 }
-function orderx($num)
-{
-    $a = str_split($num);
-    $a = sort($a);
-    $s = implode($a);
-    return $s;
-}
+
 
 function isBanShunzi($num)
 {
     if (isShunzi($num))
         return false;
-    $num = orderx($num);
+    $num = order_str($num);
     $cye2 = substr($num, 0, 2);
     $ho2 = substr($num, 1, 2);
     $a = ['12', '23', '34', '45', '56', '67', '78', '89', '90', '01', '12'];
@@ -201,41 +269,45 @@ function isZalyo($num)
         return false;
     else  return true;
 }
-function str_delNum($str)
+
+
+
+
+
+
+//-----------------------------------core .fun lib---------------------------
+//检查字符串是否以特定的子字符串开头
+function startsWith($string, $startString)
 {
-    return preg_replace('/[\W]/', '', $str);
+    $len = strlen($startString);
+    return (substr($string, 0, $len) === $startString);
 }
 
-function getWefa($numb)
+
+function str_splitX($str)
 {
+    //support chinese char,,,,  str_split not spt chins char
+    return  preg_split('/(?<!^)(?!$)/u', $str);
+}
 
 
-    global $wefa_rex;
-    $a = explode(",", $wefa_rex);
+//echo " str ddl:".str_delNum("后顺333");
+function str_delNum($str)
+{
+    return preg_replace('/[\d]/', '', $str);
+}
 
-    $arr = $a;
 
-    foreach ($arr as $key => $value) {
-        $a100 = explode("=", $value);
-        $wefa = $a100[0];
-        $rx = $a100[1];
-
-        echo PHP_EOL;
-        echo "----------------------------------";
-        echo PHP_EOL;
-        print_r($numb);
-        print_r($wefa);
-        print_r($rx);
-        $p = '/'  . $rx . '/';
-        print_r($p);
-        if (preg_match($p, $numb))
-            return   $wefa;
-        else
-            print_r("   not match..");
-    }
-
-    $arr = array_map(function ($item) {
-        $a100 = explode("=", $item);
-        return $item . '_i';
-    }, $a);
+function order_str($num)
+{
+    echo 1151;
+    print_r("num:" . $num . "    ");
+    $a = str_split($num);
+    print_r($a);
+    sort($a);
+    echo " aft asort:";
+    print_r($a);
+    // die();
+    $s = implode($a);
+    return $s;
 }

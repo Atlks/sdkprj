@@ -1,0 +1,15 @@
+fns rpt 金融报表
+
+## bls sht 资产负载表，各大accbls 以及变化表。。
+
+crpt acc。。(crpt dply ,,,,  crpt chg logx) 
+app bls n trans log  (wrix  ,hwione ) 
+cash acc。。cash
+实物资产 cp ,,card,,id
+
+
+## 利润表   花销表
+
+
+
+## cash 现金流量表
