@@ -1,8 +1,14 @@
 tpx dbg 
 
 
-open dbg mode...
-close cache 
+	行  4: ## open dbg mode...
+	行  5: ## close cache 
+	行 32: ## 太多trace.关闭trace 只显示必要debug err
+	行 42: ## 错误catch与日志输出
+	行 63: ## use php deflt ex catch hdlr...	
+
+## open dbg mode...
+## close cache 
 
 
 
@@ -11,3 +17,53 @@ close cache
 如果按照上面方法调用出错，可能是缓存的原因，删除掉 runtime文件夹即可，如果程序调试阶段，可以在项目入口文件中设置不生成缓存，设置方法：
 
 define(‘NO_CACHE_RUNTIME’,True);
+
+
+#debug mode
+
+env文件的定义格式如下：
+
+// 设置开启调试模式
+APP_DEBUG =  true
+// 其它的环境变量设置
+
+一旦关闭调试模式，发生错误后不会提示具体的错误信息，如果你仍然希望看到具体的错误信息，那么可以在app.php文件中如下设置：
+
+// 显示错误信息
+'show_error_msg'        =>  true,    
+
+
+
+
+## 太多trace.关闭trace 只显示必要debug err
+
+
+ 。env file
+[app]
+debug = false
+trace = false
+APP_DEBUG =  false
+
+
+## 错误catch与日志输出
+
+
+
+app\ExceptionHandle异常处理类，直接修改该类的相关方法即可完成应用的自定义异常处理机制。
+/**
+ * 应用异常处理类
+ */
+class ExceptionHandle extends Handle
+{
+    
+    public function report(Throwable $exception): void
+    {
+        // 使用内置的方式记录异常日志
+        parent::report($exception);
+        $errdir="";
+        $j=json_encode($exception,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+        file_put_contents( $errdir.date('Y-m-d H')."ex648_exhdlRpt.txt", $exception->getMessage() .PHP_EOL, FILE_APPEND);
+        file_put_contents( $errdir.date('Y-m-d H')."ex648_exhdlRpt.txt",  $j.PHP_EOL, FILE_APPEND);
+    }
+	
+## use php deflt ex catch hdlr...	

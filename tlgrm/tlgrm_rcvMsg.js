@@ -6,13 +6,6 @@
 const { exec } = require('child_process');
 const TelegramBot = require('node-telegram-bot-api');
 
-// replace the value below with the Telegram token you receive from @BotFather
-//token = '6367905200:AAH0KUIu5uVKKCPWYi-aClaNW4lK9p-Rsps';
-//token = "6424319932:AAFuKlo4dxeraUYhiF1EY6PEn2ozTBVIYbc"; //nnbot
-//token = '6540014740:AAHLjeevuyWdzyMEoXxX9GRTE1nUs4hc_pI'; //rcvmsg   rcvbot_bot
-//oken = '6605810782:AAF-V8dXriqJJxTaOfVxmf5KQY5S_P9yLs8'; //jbnn chk bot
-
-//token = '6648133077:AAFO0flf9bzoGxeWsQ_ugWpyHoelJLjwq1U'; //jbhash chkbot
 
 
 
@@ -40,7 +33,7 @@ bot.on('message', (msg) => {
     cmd = "node   tlgrm/msgHdl.js " + encodeURI(JSON.stringify(msg));
     $phpexe = "C:\\phpstudy_pro\\Extensions\\php\\php8.0.2nts\\php.exe";
     // $tlghr_msg_hdl = " C:\\w\\jbbot\\tlgrmHdl_temacyo.php ";
-    cmd = $phpexe + "   tlgrm/tlgrmHdl_temacyo.php " + encodeURI(JSON.stringify(msg));
+    cmd = $phpexe + "   tlgrm/tgHdl.php " + encodeURI(JSON.stringify(msg));
     console.log(cmd)
     exec(cmd)
     console.log(999)

@@ -2,8 +2,10 @@
 
 
 
-$errdir='/www/wwwroot/bot.521ck.vip/app/controller/';
-$errdir='';
+$errdir='/www/wwwroot/ssc.521ck.vip/app/controller/';
+//$errdir='';
+
+
 function exceptions_error_handler($errno, $message, $filename, $lineno) {
     $ex229['errno']=$errno;
     $ex229['message']=$message;

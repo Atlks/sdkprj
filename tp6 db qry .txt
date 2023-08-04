@@ -1,0 +1,38 @@
+tp6 db query  
+
+字符串条件查询
+对于一些实在复杂的查询，也可以直接使用原生SQL语句进行查询，例如：
+
+Db::table('think_user')
+    ->whereRaw('id > 0 AND name LIKE "thinkphp%"')
+    ->select();
+	
+	
+	
+	Db类支持原生SQL查询操作，主要包括下面两个方法：
+
+V6.0.3+版本开始，原生查询仅支持Db类操作，不支持在模型中调用原生查询方法（包括query和execute方法）。
+
+query方法
+query方法用于执行SQL查询操作，返回查询结果数据集（数组）。
+
+使用示例：
+
+Db::query("select * from think_user where status=:id", ['id' => 1]);
+复制
+
+
+
+
+
+  //   C:\phpstudy_pro\Extensions\php\php8.0.2nts\php.exe C:\项目最新\jbbot\public\index2.php   handle2/gettypex
+    function gettypex()
+    {
+        var_dump(111);
+      
+     $rows=  \think\Facade\Db::name('dbbbbbb') ->whereRaw("玩法='xxx'")->select();
+
+     file_put_contents("351.json",json_encode($rows));
+    //  var_dump($rows);
+      var_dump($rows[0]['玩法']);
+    }

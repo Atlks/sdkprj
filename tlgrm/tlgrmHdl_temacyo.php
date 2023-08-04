@@ -50,7 +50,7 @@ echo PHP_EOL;
 $uid = $msg['from']['id'];
 $cmd = `reduce_bal uid=${uid} rdcAmt=${xiazhuAmt}`;
 console_log($cmd);
-
+$processed=true;
 /**
  * 
  * function myFunc(arg) {
@@ -62,6 +62,7 @@ setTimeout(myFunc, 5000, 'funky');
 
 //var_dump( getBetContxEcHo("1/大/1000") );
 var_dump( getBetContxEcHo("1/2/1000") );
+
  function getBetContxEcHo($bet_str)
  {
 
@@ -92,6 +93,14 @@ function getNum_frmStr($str)
     }
     return  $number;
 }
+function getAmt_frmBetStr($str)
+{
+    //   $str = $msg['text'];
+    if (preg_match('/(\d+)$/', $str, $match)) {
+        $number = $match[0];
+    }
+    return  $number;
+}
 
 
 
@@ -102,31 +111,9 @@ function console_log($p)
 }
 
 
-function bot_sendMessage($chat_id, $msg, $bot_token)
-{
-    $glb['__id'] = "glb";
-    $glb['chat_id'] = $chat_id;
-    $glb['msg'] = $msg;
-    echo json_encode($glb, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    // die();  
-    echo PHP_EOL;
-    echo PHP_EOL;
-    $msg = urlencode($msg);
-    $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=$msg";
-    echo $url_tmp;
-    echo PHP_EOL;
-    echo PHP_EOL;
-    echo file_get_contents($url_tmp);
-}
+ 
 
-
-function sendmsg($chat_id, $msg)
-{
-    $url_tmp = "https://api.telegram.org/bot$bot_token/sendMessage?chat_id=$chat_id&text=$msg";
-    echo $url_tmp;
-
-    echo file_get_contents($url_tmp);
-}
+ 
 //{"id":-960237539,"title":"grptst","type":
 
 
