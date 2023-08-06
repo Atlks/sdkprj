@@ -1,0 +1,29 @@
+lgx  prblm solu
+	行  6: ## 上下文信息
+	行 13: ## 单文件日志 json日志  方便分析日记
+	行 18: ## out line no linenum
+
+
+	
+## 上下文信息
+日志可以传入上下文信息（数组），并且被替换到日志内容中，例如：
+
+Log::info('日志信息{user}', ['user' => '流年']);
+实际写入日志的时候，{user}会被替换为流年。
+
+ 
+## 单文件日志 json日志  方便分析日记
+默认情况下，日志是按照日期为目录，按天为文件生成的，但如果希望仅生成单个文件（方便其它的工具或者服务读取以及分析日志）。
+
+
+
+## out line no linenum
+
+方法1：config/log.php 增加配置 record_trace=true，这样会把所有的跟踪信息用字符串打到日志里，包括代码位置，缺点是trace内容比较多
+
+not efffec
+
+手动加上linenum
+
+   \think\facade\Log::info("340L");
+            \think\facade\Log::info($text);

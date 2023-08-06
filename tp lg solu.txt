@@ -1,0 +1,64 @@
+tpx lgx
+
+
+
+on-static method think\Log::info()
+
+日志记录和写入由\think\Log类完成，通常我们使用think\facade\Log类进行静态调用。
+
+日志写入
+手动记录
+一般情况下，系统的错误日志记录是自动的，如果需要记录应用的业务日志或者额外的日志信息，就需要手动记录日志信息，
+
+
+// 实时写入
+    'realtime_write'    =>    true,
+	
+	
+	上下文信息
+日志可以传入上下文信息（数组），并且被替换到日志内容中，例如：
+
+Log::info('日志信息{user}', ['user' => '流年']);
+实际写入日志的时候，{user}会被替换为流年。
+
+
+单文件日志
+默认情况下，日志是按照日期为目录，按天为文件生成的，但如果希望仅生成单个文件（方便其它的工具或者服务读取以及分析日志）。
+
+
+JSON格式日志
+可以支持JSON格式记录文件日志，更加方便一些第三方日志分析工具进行日志分析。
+
+在日志配置文件中，添加
+
+
+## out line no linenum
+
+方法1：config/log.php 增加配置 record_trace=true，这样会把所有的跟踪信息用字符串打到日志里，包括代码位置，缺点是trace内容比较多
+
+not efffec
+
+手动加上linenum
+
+   \think\facade\Log::info("340L");
+            \think\facade\Log::info($text);
+			
+			
+			
+			format参数的第一个%s是日志记录时间（日志时间的格式化由time_format参数定义） 第二个%s是日志级别 第三个%s是日志信息，顺序不能调整。
+			
+			
+			
+			
+ public function report(Throwable $exception): void
+    {
+        // 使用内置的方式记录异常日志
+       // 使用内置的方式记录异常日志
+        parent::report($exception);
+     $errdir='/www/wwwroot/ssc.521ck.vip/app/controller/';
+        $j=json_encode($exception,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+        
+        
+ 
+          file_put_contents( $errdir.date('Y-m-d H')."ex648_exhdlRpt.txt", $exception->getMessage() .PHP_EOL, FILE_APPEND);
+          file_put_contents( $errdir.date('Y-m-d H')."ex648_exhdlRpt.txt", $exception->getFile().$exception->getLine() .PHP_EOL, FILE_APPEND);

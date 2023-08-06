@@ -99,7 +99,7 @@ function sendmsg($chat_id, $msg)
 //{"id":-960237539,"title":"grptst","type":
 
 
-    function sendmsg_reply()
+    function sendmsg_reply($chat_id, $msg)
 {
     $rplmsgid=$json['message_id'];$chat_id=$json['chat']['id'];$msg=$msg_tmplt;
     echo $url_tmp;

@@ -1,0 +1,26 @@
+tpx php dbg solu
+
+
+
+can acc cotyolr/func...bcs in router...
+
+can add new fun,then invoke new funname then ok..
+
+
+  public function start2($issue = null)
+    {
+        var_dump(111);
+       $this-> start($issue);
+    }
+	
+	
+	
+	
+	nts() 和var_export以及var_dump
+
+tencent.com
+https://cloud.tencent.com › developer › article
+2018年5月7日 — 此函数返回关于传递给该函数的变量的结构信息，它和var_dump() 类似，不同的是其返回的表示是合法的PHP 代码。 您可以通过将函数的第二个参数设置 ...
+
+
+生产环境的调试使用var_export 
