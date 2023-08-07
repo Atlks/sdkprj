@@ -2,7 +2,7 @@
 
 <?php
 
-
+// C:\phpstudy_pro\Extensions\php\php8.0.2nts\php.exe C:\w\sdkprj\dbg\logx.php
 
 tttt(123456);
 

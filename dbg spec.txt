@@ -1,0 +1,26 @@
+dbg spec
+
+just output for console...
+
+var_dump is ok..  mst include linenum...
+
+ex just throw dflt...
+
+
+
+--------------------------
+## if needc log ..
+login process Dsl linnum...use __line___
+invoke impt prcsName,param...ret val...
+invoke sql
+
+ex catch log write..then throw again...
+
+
+
+## never only catch ex not throw...
+log just for log..then maopao thew again..
+
+
+
+

@@ -1,0 +1,18 @@
+game bot keyword act trig prcs
+
+
+
+ Handle2.index()
+ 
+    public function processMessage($message)
+	
+	
+	
+game2.php
+	  $game->player_exec
+	  
+	  player_exec
+	  
+	  
+	   regex_betV2($content)
+	  
