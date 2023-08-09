@@ -1,0 +1,9 @@
+  tlgrm ssl curl ingorn
+  
+  protected function executeCurl(array $options)
+    {
+        curl_setopt_array($this->curl, $options);
+
+        //ati
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);

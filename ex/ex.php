@@ -17,7 +17,17 @@ ini_set("error_log", $errdir.date('Y-m-d H')."lg142_errLog.txt");
 
 
 
+set_error_handler('error_handler142');  //this only for log dbg ,,,if local dbg ,,console dbg is more easy
+register_shutdown_function('shutdown_hdlr');
+//set_Exception_handler();
+set_exception_handler('think\ex_hdlr');
+set_error_handler("think\\error_handler142");
+register_shutdown_function('think\shutdown_hdlr');
 
+function ex_hdlr($exception)
+{
+    \think\facade\Log::info (  json_encode($exception) );
+}
 
 
 function error_handler142($errno, $message, $filename, $lineno) {
@@ -49,8 +59,7 @@ function shutdown_hdlr()
     }
    
 }
-set_error_handler('error_handler142');  //this only for log dbg ,,,if local dbg ,,console dbg is more easy
-register_shutdown_function('shutdown_hdlr');
+
 
 
 

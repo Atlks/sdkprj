@@ -34,3 +34,13 @@ Stack trace:
 #4 C:\Users\attil\PhpstormProjects\untitled\async.php(43): Workerman\Worker::runAll()
 #5 {main}
 2023-07-26 21:25:26 pid:1 Worker process terminated
+2023-08-09 16:48:43 pid:1 Worker process terminated with ERROR: E_ERROR "Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "task5" not found or invalid function name in C:\w\sdkprj\timer\Workerman\Events\Select.php:232
+Stack trace:
+#0 C:\w\sdkprj\timer\Workerman\Events\Select.php(280): Workerman\Events\Select->tick()
+#1 C:\w\sdkprj\timer\Workerman\Worker.php(2402): Workerman\Events\Select->loop()
+#2 C:\w\sdkprj\timer\Workerman\Worker.php(1397): Workerman\Worker->run()
+#3 C:\w\sdkprj\timer\Workerman\Worker.php(1340): Workerman\Worker::forkWorkersForWindows()
+#4 C:\w\sdkprj\timer\Workerman\Worker.php(539): Workerman\Worker::forkWorkers()
+#5 C:\w\sdkprj\timer\async.php(22): Workerman\Worker::runAll()
+#6 {main}
+  thrown in C:\w\sdkprj\timer\Workerman\Events\Select.php on line 232"
