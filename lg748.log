@@ -1,0 +1,29 @@
+m1[1235]  C:\w\sdkprj\log\log.php:45 f:m1
+m1[1235]  C:\w\sdkprj\log\log.php:45 f:m1
+m1[1235]  C:\w\sdkprj\log\log.php:49 f:m1
+select from db
+m1[1235]  C:\w\sdkprj\log\log.php:49 f:m1
+select from db
+m1[1235]  C:\w\sdkprj\log\log.php:56 f:m1
+m1[1235]  C:\w\sdkprj\log\log.php:56 f:m1
+----------------errrrr---------------------------
+errmsg:Call to undefined function override_function()
+file_linenum:C:\w\sdkprj\log\log.php:21
+errtraceStr:#0 {main}
+----------------errrrr finish---------------------------
+m1[1235]  C:\w\sdkprj\log\log.php:56 f:m1
+----------------errrrr---------------------------
+errmsg:Call to undefined function override_function()
+file_linenum:C:\w\sdkprj\log\log.php:21
+errtraceStr:#0 {main}
+----------------errrrr finish---------------------------
+----------------errrrr---------------------------
+errmsg:Call to undefined function override_function()
+file_linenum:C:\w\sdkprj\log\log.php:18
+errtraceStr:#0 {main}
+----------------errrrr finish---------------------------
+----------------errrrr---------------------------
+errmsg:Call to undefined function override_function()
+file_linenum:C:\w\sdkprj\log\log.php:18
+errtraceStr:#0 {main}
+----------------errrrr finish---------------------------
