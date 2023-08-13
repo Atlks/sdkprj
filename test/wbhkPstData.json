@@ -1,0 +1,20 @@
+{
+    "update_id": 369339042,
+    "message": {
+        "message_id": 2,
+        "from": {
+            "id": 879006550,
+            "is_bot": false,
+            "first_name": "\u5341 jarkas \u5927\u9c7c \u5218\u6d0b \u6c64\u59c6",
+            "username": "Xxx0079468"
+        },
+        "chat": {
+            "id": -987135836,
+            "title": "ssc\u65f6\u65f6\u5f69\u6d4b\u8bd5",
+            "type": "group",
+            "all_members_are_administrators": true
+        },
+        "date": 1691147769,
+        "text": "获取我的群信息"
+    }
+}

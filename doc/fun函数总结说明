@@ -1,0 +1,15 @@
+
+
+
+createTrendImage    img 图像画表格 文字
+
+
+
+Game2handlrLogic  tlgrm 接受消息关键词，触发的业务逻辑代码
+
+
+
+replace_markdown   markdown 转移编码
+
+
+lotry hash ssc.drawV3     获取开奖hash于开奖号码
