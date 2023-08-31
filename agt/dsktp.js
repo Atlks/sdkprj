@@ -1,3 +1,6 @@
+ 
+ // C:\w\sdkprj\node_modules\electron\dist\electron.exe  C:\w\sdkprj\agt\dsktp.js
+ 
  const { app, BrowserWindow } = require('electron')
 
  function createWindow() {
