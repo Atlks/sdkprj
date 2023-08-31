@@ -1,0 +1,18 @@
+
+
+
+# if js in htm..the import path just the html path..not js path...so requei anopther js path prblm..
+
+solu ,,,mlt requre  diff path n ex...
+try{
+    require("./enc.js")
+}catch(e){
+  console.log(e)
+}
+
+try{
+    require("enc")
+}catch(e){
+
+    console.log(e)
+}

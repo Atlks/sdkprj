@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.7.0.js"
+          integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+          crossorigin="anonymous"></script>
+
+
+
+  <link rel="stylesheet" href="res/style.css">
+
+    <script src="libx/php.js"></script>
+    <script src="libx/dsl.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="node_modules/api2023jb.js"></script>
+  <script src="node_modules/fp_ati1990.js"></script>
+</head>
+<body>
+
+
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <li class="breadcrumb-item"><a href="index.html" target="_top"> home </a></li>
+
+    <li class="breadcrumb-item"><a href="#">上下分管理</a></li>
+    <li class="breadcrumb-item"><a href="#">群管理</a></li>
+    <li class="breadcrumb-item"><a href="#">日志</a></li>
+
+
+  </ol>
+</nav>
+
+
+
+<p></p>
+
+用户名：<input type="text" value="uname1" id="uname" name="fname" style="width: 100px">
+上下分：<input type="text"  value="200" id="score" name="fname" style="width: 80px"><br>
+<button onclick="playerStat237()"   type="button" class="btn btn-primary" style="width00: 100%">搜索</button>
+<button onclick="shangfen1236()"   type="button" class="btn btn-primary" style="width00: 100%">上分</button>
+<button onclick="xiafen745()"   type="button" class="btn btn-primary" style="width00: 100%">下分</button>
+<button onclick="orderQryShagnxiafen415()"   type="button" class="btn btn-primary" style="width00: 100%">查询上下分</button>
+
+<button onclick="PlayerKexiafenBal638()"   type="button" class="btn btn-primary" style="width00: 100%">查询可下分</button>
+
+
+<p></p>
+
+
+
+<div class="card">
+  <div class="card-header">
+    玩家管理
+  </div>
+  <div class="card-body">
+
+
+    <table class="table" id="app3">
+      <tr> <td>玩家id</td> <td>昵称</td><td>余额</td><td>类型</td></tr>
+
+
+      <tr v-for="item in items">
+
+        <td> {{ item.data.account }}</td> <td></td><td> {{ item.data.totalScore }}</td><td></td>
+      </tr>
+
+
+    </table>
+  </div>
+</div>
+
+
+
+
+
+<!--
+<div id="app">{{ message }}</div>
+
+
+<ul id="app2">
+  <li v-for="item in items">
+    {{ item.message }}
+  </li>
+
+</ul>
+
+
+ const app1 = createApp({
+    setup() {
+      const message = ref('Hello Vue!')
+      return {
+        message
+      }
+    }
+  }).mount('#app')
+
+
+
+  const app2 = createApp({
+    setup() {
+      const message = ref('Hello Vue!')
+      const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+      return {
+        items,message
+      }
+    }
+  }).mount('#app2')
+-->
+
+<script type="module" >
+
+
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+
+
+  console.log(72222222222)  // is execed...
+  function  bindJsonToTable(json514)
+  {
+    console.log("in bind fu")
+    createApp({
+      setup() {
+        const message = ref('Hello Vue!')
+        const items = ref([ json514 ])
+        return {
+          items,message
+        }
+      }
+    }).mount('#app3')
+  }
+
+ window.bindJsonToTable=bindJsonToTable
+ global['bindJsonToTable']=bindJsonToTable
+ window['bindJsonToTable']=bindJsonToTable
+
+
+</script>
+
+<script defer type="module">
+  //defer not take effect ..must type module,then can invk behide the bindJsonToTable
+  var json514={
+    "maintype": "/GameHandle",
+    "type": 7,
+    "data": {
+      "code": 0,
+      "agentid": 111356,
+      "linecode": "10001_1",
+      "status": 0,
+      "userid": 32076939,
+      "account": "uname1",
+      "totalScore": 300.0,
+      "integralvalue": 6.0,
+      "addscore": 300.0,
+      "subscore": 0.0,
+      "addscoretimes": 2,
+      "subscoretimes": 0,
+      "totalwinlose": 0.0,
+      "totalrevenue": 0.0
+    }
+  };
+  //console.log( window['bindJsonToTable']) //all undef
+  //console.log( global['bindJsonToTable'])
+ // window['bindJsonToTable'](json514)
+
+
+</script>
+<!--
+ <ul id="app">
+<li v-for="item in items">
+  {{ item.message }}
+</li>
+
+ </ul>
+<script>
+  const { createApp, ref } = Vue
+
+  const app1 = createApp({
+    /* ... */
+  })
+  app1.mount('#app')
+
+  createApp({
+    setup() {
+      const message = ref('Hello vue!')
+      const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+      return {
+        message
+      }
+    }
+  }).mount('#app')
+</script>
+
+-->
+
+
+<p></p>
+
+<div class="card">
+  <div class="card-header">
+    上分记录
+  </div>
+  <div class="card-body">
+
+
+    <table class="table">
+      <tr> <td>玩家id</td> <td>昵称</td><td>分数</td><td>所属群</td></tr>
+
+    </table >
+  </div>
+</div>
+
+
+
+
+<p></p>
+
+
+<div class="card">
+  <div class="card-header">
+    下分记录
+  </div>
+  <div class="card-body">
+
+
+    <table class="table">
+      <tr> <td>玩家id</td> <td>昵称</td><td>分数</td><td>所属群</td></tr>
+
+    </table >
+  </div>
+</div>
+
+
+
+
+<script >
+
+  function  xiafen745(){
+    var funname = arguments.callee.name;
+    // arguments.callee.name
+    arg = JSON.stringify(arguments);
+    console.log("*********=>" + funname + arg);
+
+
+
+    //rzt=  dsl_callFunCmdMode("playerStat",$("#uname").val() )
+    rzt=  dsl_callFunCmdMode("xiafen",$("#uname").val() ,$("#score").val())
+
+
+    //  {"maintype":"/GameHandle","type":7,"data":{"code":0,"agentid":111356,"linecode":"10001_1","status":0,"userid":32076939,"account":"uname1","totalScore":300.0,"integralvalue":6.0,"addscore":300.0,"subscore":0.0,"addscoretimes":2,"subscoretimes":0,"totalwinlose":0.0,"totalrevenue":0.0}}
+    console.log("[xiafen745] rzt=>" + rzt)
+    rztobj=JSON.parse(rzt);
+
+
+    if(rztobj.data.code==0)
+      alert("下分成功")
+    else
+      alert(rzt)
+
+  }
+
+  function  PlayerKexiafenBal638()
+  {
+    var funname = arguments.callee.name;
+    // arguments.callee.name
+    arg = JSON.stringify(arguments);
+    console.log("*********=>" + funname + arg);
+
+
+
+    //rzt=  dsl_callFunCmdMode("playerStat",$("#uname").val() )
+    rzt=  dsl_callFunCmdMode("PlayerKexiafenBal",$("#uname").val() )
+
+
+    //  {"maintype":"/GameHandle","type":7,"data":{"code":0,"agentid":111356,"linecode":"10001_1","status":0,"userid":32076939,"account":"uname1","totalScore":300.0,"integralvalue":6.0,"addscore":300.0,"subscore":0.0,"addscoretimes":2,"subscoretimes":0,"totalwinlose":0.0,"totalrevenue":0.0}}
+    console.log("[PlayerKexiafenBal638] rzt=>" + rzt)
+    rztobj=JSON.parse(rzt);
+    alert("此用户可下分为:"+rztobj.data.score)
+   // rztobj.data.totalScore=rztobj.data.score;
+ //   window['bindJsonToTable'](rztobj)
+
+
+  }
+
+  function orderQryShagnxiafen415()
+  {
+    var funname = arguments.callee.name;
+    // arguments.callee.name
+    arg = JSON.stringify(arguments);
+    console.log("*********=>" + funname + arg);
+
+
+
+    rzt=  dsl_callFunCmdMode("orderQryShagnxiafen",$("#uname").val() )
+
+   // console.log("[playerStat237] rzt=>" + rzt)
+  }
+
+  function  playerStat237()
+  {
+
+    var funname = arguments.callee.name;
+    // arguments.callee.name
+    arg = JSON.stringify(arguments);
+    console.log("*********=>" + funname + arg);
+
+
+
+    timestamp = time();
+
+    _paraValue = sprintf("account=%s", $("#uname").val() );
+    echo("_paraValue==>"+_paraValue)
+    let url = buildUrlNget(_paraValue, timestamp, apitype_PlayerScore);
+    console.log(url)
+
+    $.get(url,function(data){
+      console.log("[playerStat237] rzt=>" + data)
+      rztobj=JSON.parse(data);
+
+     // $("#loaddiv").hide();
+
+      //rzt=  dsl_callFunCmdMode("playerStat",$("#uname").val() )
+    //  rzt=  dsl_callFunCmdMode("PlayerScoreQry",$("#uname").val() )
+
+
+      //  {"maintype":"/GameHandle","type":7,"data":{"code":0,"agentid":111356,"linecode":"10001_1","status":0,"userid":32076939,"account":"uname1","totalScore":300.0,"integralvalue":6.0,"addscore":300.0,"subscore":0.0,"addscoretimes":2,"subscoretimes":0,"totalwinlose":0.0,"totalrevenue":0.0}}
+
+     // rztobj=JSON.parse(rzt);
+
+
+      if(rztobj.data.code==0)
+        window['bindJsonToTable'](rztobj)
+      else
+        alert( window["errcodeMsg"+rztobj.data.code] +" "+ data)
+
+    //  console.log("[playerStat237] rzt=>" + rzt)
+
+
+
+
+    })
+
+
+
+  }
+  function  shangfen1236()
+  {
+
+    var funname = arguments.callee.name;
+    // arguments.callee.name
+    arg = JSON.stringify(arguments);
+    console.log("*********=>" + funname + arg);
+
+
+
+       rzt=  dsl_callFunCmdMode("shangfen",$("#uname").val(),$("#score").val())
+
+
+
+      console.log("[shangfen1236] rzt=>" + rzt)
+    rztobj=JSON.parse(rzt);
+       if(rztobj.data.code==0)
+          alert("上分成功")
+    else
+      alert(rzt)
+  }
+
+
+</script>
+</body>
+</html>

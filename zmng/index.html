@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1">
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+    <!-- -->
+
+    <title>管理工具v1.0</title>
+    <script src="node_modules/fp_ati1990.js"></script>
+    <script src="node_modules/dsl.js"></script>
+    <script src="node_modules/api2023jb.js"></script>
+</head>
+<body style="padding: 20px">
+
+
+<button   type="button" class="btn btn-primary">首页</button>
+<button onclick="location='shangxiafen.htm'"   type="button" class="btn btn-success">上下分管理</button>
+<button onclick="clk()" type="button" class="btn btn-danger">群管家设置</button>
+<button   type="button" class="btn btn-warning" >上下分群设置</button>
+<button   type="button" class="btn btn-info">日志</button>
+<button onclick="agtbal648()" id=" " type="button" class="btn btn-primary" style="">代理商余额查询</button>
+
+<button class="btn btn-primary" disabled id="loaddiv" style="xdisplay:none ">
+    <span class="spinner-border spinner-border-sm"></span>
+    Loading..
+</button>
+
+<script>
+     $("#loaddiv").hide();
+   // $("#loaddiv").hide();
+
+     window["errcodeMsg-2"]="未找到对应代理编号信息"
+     window["errcodeMsg-3"]="代理MD5校验码错误"
+     window["errcodeMsg-4"]="参数转码或代理解密校验码错误\n"
+
+
+   function  agtbal648()
+
+
+    {
+        var funname = arguments.callee.name;
+        // arguments.callee.name
+        arg = JSON.stringify(arguments);
+        console.log("*********=>" + funname + arg);
+
+        $("#loaddiv").show()
+
+      //  setTimeout(function (){   $("#loaddiv").show();  },100)
+
+
+        timestamp = time();
+        _paraValue=""
+        let url = buildUrlNget(_paraValue, timestamp, apitype_agtBal);
+        console.log(url)
+          $.get(url,function(data){
+            console.log("[agtbal648] rzt=>" + data)
+            rztobj=JSON.parse(data);
+
+            $("#loaddiv").hide();
+
+         //   rztobj=JSON.parse(rzt);
+
+
+            if(rztobj.data.code==0)
+                alert("此代理余额为:"+rztobj.data.score)
+            else
+                alert( window["errcodeMsg"+rztobj.data.code] +" "+ data)
+
+        })
+
+
+        //
+        // setTimeout(function (){
+        //
+        //     //rzt=  dsl_callFunCmdMode("playerStat",$("#uname").val() )
+        //     rzt=  dsl_callFunCmdMode("agtBal" )
+        //
+        //
+        //     //  {"maintype":"/GameHandle","type":7,"data":{"code":0,"agentid":111356,"linecode":"10001_1","status":0,"userid":32076939,"account":"uname1","totalScore":300.0,"integralvalue":6.0,"addscore":300.0,"subscore":0.0,"addscoretimes":2,"subscoretimes":0,"totalwinlose":0.0,"totalrevenue":0.0}}
+        //     console.log("[agtbal648] rzt=>" + rzt)
+        //     rztobj=JSON.parse(rzt);  $("#loaddiv").hide();
+        //      alert("此代理余额为:"+rztobj.data.score)
+        //
+        //
+        // },1000000)
+
+      //  $("#loaddiv").hide();
+        // rztobj.data.totalScore=rztobj.data.score;
+        //   window['bindJsonToTable'](rztobj)
+
+    }
+</script>
+
+<form role="form">
+    <div class="form-group">
+        <label for="fname">用 户 id</label>
+        <input class="form-control" type="text" id="uid" name="fname">
+    </div>
+
+    <div class="form-group">
+        <label for="password">descode</label>
+        <input class="form-control" type="password" id="password" name="password">
+    </div>
+
+    <div class="form-group">
+        <label for="md5code">md5code</label>
+        <input class="form-control" type="md5key" id="md5key" name="md5code">
+    </div>
+
+</form>
+
+
+<p></p>
+<script src="libx/php.js"></script>
+<script000 src="libBiz/api.js"></script000>
+<button onclick="loginLocal()" id="btnLg" type="button" class="btn btn-primary" style="width00: 100%">配置</button>
+
+<script src="ctrl.js"></script>
+
+<scriptx src="//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></scriptx>
+
+<script>
+  //  var db = new PouchDB('my_database');
+</script>
+
+
+<script>
+    $(
+
+        function(){
+
+
+        setInterval(function (){
+            rdmX= Math.round(Math.random() * 1000);console.log(rdmX)
+            img=$("<img src='res/coin.png'  width='50' height='50' style='position: absolute;top:0' >");
+            img.css("left",rdmX)
+            $(img).animate({ top:555},{ duration: 5000, queue: false });
+
+            $("body").append(img)
+
+        },10000);
+
+        //sametime run 同时运行 效果动画
+        setTimeout(function(){
+            $("#btnLg").animate({width:'100%'},{ duration: 3000, queue: false });
+        },0)
+
+        $("#btnLg").fadeOut(500).fadeIn(3000);
+        console.log(999)
+
+        // $("#btnLg").click(function(){
+        //
+        //     $("#div3").fadeIn(3000).fadeOut(3000);
+        // });
+
+
+
+
+
+
+    });
+</script>
+
+</body>
+</html>

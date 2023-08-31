@@ -1,0 +1,9 @@
+{
+  "maintype": "/GameHandle",
+  "type": 1,
+  "data": {
+    "code": 0,
+    "account": "uname1",
+    "score": 300.0
+  }
+}

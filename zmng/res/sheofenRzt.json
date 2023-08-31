@@ -1,0 +1,12 @@
+{
+  "maintype": "/GameHandle",
+  "type": 2,
+  "data": {
+    "orderid": "1113561693485698000uname1",
+    "agentid": 111356,
+    "account": "uname1",
+    "score": 200.000000,
+    "code": 0,
+    "errmsg": "success dt(0.012786s)"
+  }
+}
