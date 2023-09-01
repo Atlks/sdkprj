@@ -3,7 +3,7 @@
 // echo(999)
 
 
-require("ati1990_fp")
+require("ati1990fp4node")
 
 echo(888)
 
@@ -16,3 +16,9 @@ console.log(chalk.bgYellow(chalk.blue('你好')))
 
 
 echo( json_encode(159) )
+
+
+require("fp_ati1990")
+
+
+log(123)

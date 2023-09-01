@@ -1,0 +1,16 @@
+ 从 CJS 导入 ESM 模块
+
+当我们想在现有 CJS 代码中使用新的 ESM 模块时，事情会变得更加棘手。 我们不能在 CJS 文件中使用 import 语句。 然而动态 import() 语法确实有效，并且可以与 await 配合从而相对方便地访问模块：
+
+
+ ESM 的异步特性也导致了它在 CJS 代码中的使用限制。 CJS 文件不支持顶级 await，因此我们不能单独使用 import：
+
+// this...
+import component from "component.mjs";
+
+// ...可以看成等价于这个...
+const component = await import("component.mjs");
+
+// ...但是 CJS 中没有顶级“ await”
+
+因此，我们必须在异步函数中使用动态 import() 结构。
